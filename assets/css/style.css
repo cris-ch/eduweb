@@ -958,6 +958,7 @@ body {
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
+  z-index: 2; /* Add a higher z-index to the map container */
 }
 
 .map-container iframe {
@@ -968,6 +969,20 @@ body {
   height: 100%;
 }
 
+.video-card .shape {
+  position: absolute;
+  z-index: 0; /* Set a lower z-index for the images */
+}
+
+.video-card .video-shape-1 {
+  top: -50px;
+  right: -50px;
+}
+
+.video-card .video-shape-2 {
+  bottom: -50px;
+  left: -50px;
+}
 
 .map-section .container {
   display: grid;
@@ -1169,14 +1184,6 @@ body {
 
   .hero-banner {
     grid-template-columns: 1fr 0.9fr;
-  }
-
-  /**
-   * VIDEO
-   */
-
-  .video .play-btn {
-    padding: 25px;
   }
 
   /**
