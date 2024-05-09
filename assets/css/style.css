@@ -428,7 +428,7 @@ body {
 
 .hero-text {
   color: var(--eerie-black-1);
-  font-size: var(--fs-4);
+  font-size: var(--fs-3);
   text-align: center;
   margin-block: 18px 20px;
 }
