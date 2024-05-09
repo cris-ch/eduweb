@@ -61,3 +61,19 @@ const activeElem = function () {
 }
 
 addEventOnElem(window, "scroll", activeElem);
+
+/**
+ * scroll to section on button "Cursos" click
+ */
+
+// Get the section element
+const categorySection = document.querySelector('.section.category');
+
+// Get the button element
+const categoryBtn = document.querySelector('a.btn.has-before');
+
+// Add a click event listener to the button
+categoryBtn.addEventListener('click', (event) => {
+  event.preventDefault(); // Prevent the default link behavior
+  categorySection.scrollIntoView({ behavior: 'smooth' }); // Scroll to the section
+});
