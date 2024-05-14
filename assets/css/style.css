@@ -1045,6 +1045,20 @@ body {
   gap: 30px;
 }
 
+.footer-top-inner {
+  display: flex;
+  align-items: center;
+}
+
+.footer-brand,
+.footer-list {
+  margin-right: 30px; /* Adjust the spacing between elements */
+}
+
+.footer-list {
+  margin-left: auto; /* Push the social icons to the right */
+}
+
 .footer-brand-text {
   margin-block: 20px;
 }
