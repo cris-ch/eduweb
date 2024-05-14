@@ -1652,3 +1652,17 @@ body {
     margin-left: auto; /* Push the social icons to the right */
   }
 }
+
+@media (max-width: 767px) {
+  .footer-top-inner > div:first-child {
+    display: none;
+  }
+
+  .footer-brand,
+  .footer-list {
+    padding: 20px 0;
+  }
+}
+
+
+
