@@ -956,10 +956,13 @@ body {
 .map-container {
   position: relative;
   width: 100%;
+  max-width: 800px; /* Adjust this value to your desired maximum width */
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
-  z-index: 2; /* Add a higher z-index to the map container */
+  z-index: 3;
+  margin: 0 auto; /* Center the container horizontally */
 }
+
 
 .map-container iframe {
   position: absolute;
