@@ -533,8 +533,61 @@
     </main>
 
     <!-- 
-        - #MAP
+        - #CONTACT FORM
       -->
+
+    <section class="section contact" id="contact" aria-label="contact">
+      <div class="container">
+        <p class="section-subtitle">Contacto</p>
+        <h2 class="h2 section-title">Envíanos un mensaje</h2>
+        <form
+          action="https://formspree.io/f/moqgbkwg"
+          method="post"
+          class="contact-form"
+        >
+          <div class="input-wrapper-grid">
+            <div class="input-group">
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Nombre"
+                  required
+                  class="input-field"
+                />
+              </div>
+              <div class="input-wrapper">
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Teléfono"
+                  required
+                  class="input-field"
+                />
+              </div>
+              <div class="input-wrapper">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  class="input-field"
+                />
+              </div>
+            </div>
+            <div class="input-wrapper">
+              <textarea
+                name="message"
+                placeholder="Mensaje"
+                required
+                class="input-field textarea-field"
+              ></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
+    </section>
 
     <!-- 
     - #FOOTER
@@ -569,8 +622,12 @@
               <div class="wrapper">
                 <span class="span">WhatsApp:</span>
 
-                <a href="tel:+011234567890" class="footer-link"
-                  >+34 686 906 345</a
+                <a
+                  href="https://web.whatsapp.com/send?phone=34686906345"
+                  class="footer-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >+34 681 29 70 89</a
                 >
               </div>
 
@@ -592,7 +649,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="assets/icons/instagram.svg" alt="Instagram"/>
+                    <img src="assets/icons/instagram.svg" alt="Instagram" />
                   </a>
                 </li>
                 <li class="social-media-button">
@@ -602,7 +659,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="assets/icons/twitter.svg" alt="Twitter"/>
+                    <img src="assets/icons/twitter.svg" alt="Twitter" />
                   </a>
                 </li>
                 <li class="social-media-button">
@@ -612,7 +669,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="assets/icons/youtube.svg" alt="YouTube"/>
+                    <img src="assets/icons/youtube.svg" alt="YouTube" />
                   </a>
                 </li>
                 <li class="social-media-button">
@@ -622,7 +679,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img src="assets/icons/linkedin.svg" alt="LinkedIn"/>
+                    <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
                   </a>
                 </li>
               </ul>
