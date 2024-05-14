@@ -1666,3 +1666,28 @@ body {
 
 
 
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-input {
+  padding: 8px 16px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius-5);
+  font-size: var(--fs-6);
+}
+
+.search-btn {
+  position: absolute;
+  right: 8px;
+  color: var(--eerie-black-1);
+  font-size: 20px;
+  background-color: transparent;
+  transition: var(--transition-1);
+}
+
+.search-btn:hover {
+  color: var(--kappel);
+}
