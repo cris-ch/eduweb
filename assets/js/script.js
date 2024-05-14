@@ -57,15 +57,15 @@ const activeElem = function () {
 addEventOnElem(window, "scroll", activeElem);
 
 // Search Functionality
-const searchInput = document.querySelector('.search-input');
-const searchBtn = document.querySelector('.search-btn');
-const mainContent = document.querySelector('main'); // Select the <main> element
+const searchInput = document.querySelector(".search-input");
+const searchBtn = document.querySelector(".search-btn");
+const mainContent = document.querySelector("main"); // Select the <main> element
 const pageContent = mainContent.innerText; // Get the text content of the main content area
 
-searchBtn.addEventListener('click', performSearch);
+searchBtn.addEventListener("click", performSearch);
 
-searchInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
     performSearch();
   }
 });
@@ -78,7 +78,7 @@ function performSearch() {
     if (matches.length > 0) {
       const firstMatchElement = highlightMatches(matches, mainContent); // Pass the <main> element
       if (firstMatchElement) {
-        firstMatchElement.scrollIntoView({ behavior: 'smooth' });
+        firstMatchElement.scrollIntoView({ behavior: "smooth" });
         console.log(`Found ${matches.length} match(es) for "${searchQuery}"`);
       } else {
         console.log(`No matches found for "${searchQuery}"`);
@@ -91,8 +91,11 @@ function performSearch() {
 
 function findMatches(query, content) {
   const matches = [];
-  const regex = new RegExp(query, 'gi');
-  const textNodes = document.createTreeWalker(mainContent, NodeFilter.SHOW_TEXT); // Use the <main> element
+  const regex = new RegExp(query, "gi");
+  const textNodes = document.createTreeWalker(
+    mainContent,
+    NodeFilter.SHOW_TEXT
+  ); // Use the <main> element
   let currentNode;
 
   while ((currentNode = textNodes.nextNode())) {
@@ -106,7 +109,7 @@ function findMatches(query, content) {
 }
 
 function highlightMatches(matches, container) {
-  const regex = new RegExp(`(${matches.join('|')})`, 'gi');
+  const regex = new RegExp(`(${matches.join("|")})`, "gi");
   const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT); // Use the <main> element
   let currentNode;
   let firstMatchElement = null;
@@ -119,7 +122,7 @@ function highlightMatches(matches, container) {
       return `<mark>${match}</mark>`;
     });
     if (newNode !== currentNode.textContent) {
-      const newElement = document.createElement('span');
+      const newElement = document.createElement("span");
       newElement.innerHTML = newNode;
       const parentNode = currentNode.parentNode;
       parentNode.replaceChild(newElement, currentNode);
@@ -130,11 +133,13 @@ function highlightMatches(matches, container) {
 }
 
 function removeHighlights() {
-  const marks = document.querySelectorAll('mark');
+  const marks = document.querySelectorAll("mark");
   marks.forEach((mark) => {
     const parentNode = mark.parentNode;
     const textNode = document.createTextNode(mark.textContent);
     parentNode.replaceChild(textNode, mark);
   });
 }
+
+// Scrolling bar
 
