@@ -5,9 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- 
-    - primary meta tag
-  -->
+    <!-- Primary meta tags -->
     <title>A Plus English</title>
     <meta name="title" content="A Plus English" />
     <meta
@@ -15,19 +13,13 @@
       content="This is a website for A Plus English Academy"
     />
 
-    <!-- 
-    - favicon
-  -->
-    <link rel="shortcut icon" href="./logo-aplus.png" type="image/svg+xml" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./logo-aplus.png" type="image/png" />
 
-    <!-- 
-    - custom css link
-  -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
 
-    <!-- 
-    - google font link
-  -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,9 +27,7 @@
       rel="stylesheet"
     />
 
-    <!-- 
-    - preload images
-  -->
+    <!-- Preload Images -->
     <link rel="preload" as="image" href="./assets/images/hero-bg.svg" />
     <link rel="preload" as="image" href="./assets/images/hero-banner-1.jpg" />
     <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg" />
@@ -46,15 +36,15 @@
   </head>
 
   <body id="top">
-    <!-- 
-    - #HEADER
-  -->
+    <!-- Progress Bar -->
     <div class="progress__container">
       <div class="progress__bar"></div>
     </div>
+
+    <!-- Header -->
     <header class="header" data-header>
       <div class="container">
-        <a href="#" class="logo">
+        <a href="#" class="logo" aria-label="A Plus logo">
           <img
             src="./assets/images/logo-aplus.png"
             width="100"
@@ -65,7 +55,7 @@
 
         <nav class="navbar" data-navbar>
           <div class="wrapper">
-            <a href="#" class="logo">
+            <a href="#" class="logo" aria-label="A Plus logo">
               <img
                 src="./assets/images/logo-aplus.png"
                 width="100"
@@ -76,7 +66,7 @@
 
             <button
               class="nav-close-btn"
-              aria-label="close menu"
+              aria-label="Close menu"
               data-nav-toggler
             >
               <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
@@ -98,27 +88,32 @@
 
             <li class="navbar-item">
               <a href="#location" class="navbar-link" data-nav-link
-                >Ubicacion</a
+                >Ubicación</a
               >
             </li>
 
             <li class="navbar-item">
-              <a href="#" class="navbar-link" data-nav-link>Contacto</a>
+              <a href="#contact" class="navbar-link" data-nav-link>Contacto</a>
             </li>
           </ul>
         </nav>
 
         <div class="header-actions">
           <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search..." />
-            <button class="search-btn" aria-label="search">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Buscar..."
+              aria-label="Buscar"
+            />
+            <button class="search-btn" aria-label="Buscar">
               <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
             </button>
           </div>
 
           <button
             class="header-action-btn"
-            aria-label="open menu"
+            aria-label="Abrir menú"
             data-nav-toggler
           >
             <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
@@ -131,14 +126,11 @@
 
     <main>
       <article>
-        <!-- 
-        - #HERO
-      -->
-
+        <!-- Hero Section -->
         <section
           class="section hero has-bg-image"
           id="hero"
-          aria-label="home"
+          aria-label="Inicio"
           style="background-image: url('./assets/images/hero-bg.svg')"
         >
           <div class="container">
@@ -168,7 +160,7 @@
                   src="./assets/images/hero-3.jpeg"
                   width="270"
                   height="300"
-                  alt="hero banner"
+                  alt="Hero banner"
                   class="img-cover"
                 />
               </div>
@@ -178,7 +170,7 @@
                   src="./assets/images/hero-2.jpeg"
                   width="240"
                   height="370"
-                  alt="hero banner"
+                  alt="Hero banner"
                   class="img-cover"
                 />
               </div>
@@ -189,6 +181,7 @@
                 height="190"
                 alt=""
                 class="shape hero-shape-1"
+                aria-hidden="true"
               />
 
               <img
@@ -197,16 +190,14 @@
                 height="551"
                 alt=""
                 class="shape hero-shape-2"
+                aria-hidden="true"
               />
             </figure>
           </div>
         </section>
 
-        <!-- 
-        - #courses
-      -->
-
-        <section class="section category" id="courses" aria-label="category">
+        <!-- Courses Section -->
+        <section class="section category" id="courses" aria-label="Cursos">
           <div class="container">
             <p class="section-subtitle">CURSOS</p>
 
@@ -233,7 +224,7 @@
                       width="50"
                       height="50"
                       loading="lazy"
-                      alt="Online Degree Programs"
+                      alt="Icono de curso"
                       class="img"
                     />
                   </div>
@@ -262,7 +253,7 @@
                       width="50"
                       height="50"
                       loading="lazy"
-                      alt="Non-Degree Programs"
+                      alt="Icono de curso"
                       class="img"
                     />
                   </div>
@@ -291,7 +282,7 @@
                       width="50"
                       height="50"
                       loading="lazy"
-                      alt="Off-Campus Programs"
+                      alt="Icono de curso"
                       class="img"
                     />
                   </div>
@@ -321,7 +312,7 @@
                       width="50"
                       height="50"
                       loading="lazy"
-                      alt="Hybrid Distance Programs"
+                      alt="Icono de curso"
                       class="img"
                     />
                   </div>
@@ -342,11 +333,8 @@
           </div>
         </section>
 
-        <!-- 
-        - #ABOUT
-      -->
-
-        <section class="section about" id="about" aria-label="about">
+        <!-- About Section -->
+        <section class="section about" id="about" aria-label="Sobre nosotros">
           <div class="container">
             <figure class="about-banner">
               <div class="img-holder" style="--width: 520; --height: 370">
@@ -355,7 +343,7 @@
                   width="520"
                   height="370"
                   loading="lazy"
-                  alt="about banner"
+                  alt="Imagen sobre nosotros"
                   class="img-cover"
                 />
               </div>
@@ -367,6 +355,7 @@
                 loading="lazy"
                 alt=""
                 class="shape about-shape-1"
+                aria-hidden="true"
               />
 
               <img
@@ -376,6 +365,7 @@
                 loading="lazy"
                 alt=""
                 class="shape about-shape-2"
+                aria-hidden="true"
               />
 
               <img
@@ -385,6 +375,7 @@
                 loading="lazy"
                 alt=""
                 class="shape about-shape-3"
+                aria-hidden="true"
               />
             </figure>
 
@@ -421,7 +412,7 @@
                     aria-hidden="true"
                   ></ion-icon>
 
-                  <span class="span">Metodologia Innovadora</span>
+                  <span class="span">Metodología Innovadora</span>
                 </li>
 
                 <li class="about-item">
@@ -441,16 +432,14 @@
                 loading="lazy"
                 alt=""
                 class="shape about-shape-4"
+                aria-hidden="true"
               />
             </div>
           </div>
         </section>
 
-        <!-- 
-        - #STATE
-      -->
-
-        <section class="section stats" aria-label="stats">
+        <!-- Stats Section -->
+        <section class="section stats" aria-label="Estadísticas">
           <div class="container">
             <ul class="grid-list">
               <li>
@@ -488,14 +477,11 @@
           </div>
         </section>
 
-        <!-- 
-        - #MAP
-      -->
-
+        <!-- Location Section -->
         <section
           class="section blog has-bg-image"
           id="location"
-          aria-label="blog"
+          aria-label="Ubicación"
           style="background-image: url('./assets/images/blog-bg.svg')"
         >
           <div class="container">
@@ -510,6 +496,7 @@
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
+                  aria-label="Mapa de ubicación"
                 ></iframe>
               </div>
               <img
@@ -517,6 +504,7 @@
                 loading="lazy"
                 alt=""
                 class="shape video-shape-1"
+                aria-hidden="true"
               />
               <img
                 src="./assets/images/video-shape-2.png"
@@ -525,6 +513,7 @@
                 loading="lazy"
                 alt=""
                 class="shape video-shape-2"
+                aria-hidden="true"
               />
             </div>
           </div>
@@ -532,11 +521,13 @@
       </article>
     </main>
 
-    <!-- 
-        - #CONTACT FORM
-      -->
-
-    <section class="section contact" id="contact" aria-label="contact">
+    <!-- Contact Form -->
+    <section
+      class="section contact"
+      id="contact"
+      aria-label="Contacto"
+      style="background-image: url('./assets/images/bg1.jpeg')"
+    >
       <div class="container">
         <p class="section-subtitle">Contacto</p>
         <h2 class="h2 section-title">Envíanos un mensaje</h2>
@@ -554,6 +545,7 @@
                   placeholder="Nombre"
                   required
                   class="input-field"
+                  aria-label="Nombre"
                 />
               </div>
               <div class="input-wrapper">
@@ -563,6 +555,7 @@
                   placeholder="Teléfono"
                   required
                   class="input-field"
+                  aria-label="Teléfono"
                 />
               </div>
               <div class="input-wrapper">
@@ -572,6 +565,7 @@
                   placeholder="Email"
                   required
                   class="input-field"
+                  aria-label="Email"
                 />
               </div>
             </div>
@@ -581,6 +575,7 @@
                 placeholder="Mensaje"
                 required
                 class="input-field textarea-field"
+                aria-label="Mensaje"
               ></textarea>
             </div>
           </div>
@@ -589,127 +584,71 @@
       </div>
     </section>
 
-    <!-- 
-    - #FOOTER
-  -->
-
-    <footer
-      class="footer"
-      style="background-image: url('./assets/images/footer-bg.png')"
-    >
-      <div class="footer-top section">
-        <div class="container">
-          <div class="footer-top-inner">
-            <div>
-              <a href="#" class="logo">
-                <img
-                  src="./assets/images/logo-black.png"
-                  width="100"
-                  height="20"
-                  alt="A Plus logo"
-                />
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">Síguenos:</p>
+        <div class="footer-list">
+          <ul class="social-list">
+            <li class="social-media-button">
+              <a
+                href="https://www.instagram.com/your-instagram-handle"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="assets/icons/instagram.svg" alt="Instagram" />
               </a>
-            </div>
-            <div class="footer-brand">
-              <div class="wrapper">
-                <span class="span">Dirección:</span>
-
-                <address class="address">
-                  Segarra 28, Mont-Roig del Camp
-                </address>
-              </div>
-
-              <div class="wrapper">
-                <span class="span">WhatsApp:</span>
-
-                <a
-                  href="https://web.whatsapp.com/send?phone=34686906345"
-                  class="footer-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >+34 681 29 70 89</a
-                >
-              </div>
-
-              <div class="wrapper">
-                <span class="span">Email:</span>
-
-                <a href="mailto:aplusenglishsch@gmail.com" class="footer-link"
-                  >aplusenglishsch@gmail.com</a
-                >
-              </div>
-            </div>
-
-            <div class="footer-list">
-              <ul class="social-list">
-                <li class="social-media-button">
-                  <a
-                    href="https://www.instagram.com/your-instagram-handle"
-                    class="social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src="assets/icons/instagram.svg" alt="Instagram" />
-                  </a>
-                </li>
-                <li class="social-media-button">
-                  <a
-                    href="https://twitter.com/your-twitter-handle"
-                    class="social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src="assets/icons/twitter.svg" alt="Twitter" />
-                  </a>
-                </li>
-                <li class="social-media-button">
-                  <a
-                    href="https://www.youtube.com/your-youtube-channel"
-                    class="social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src="assets/icons/youtube.svg" alt="YouTube" />
-                  </a>
-                </li>
-                <li class="social-media-button">
-                  <a
-                    href="https://www.linkedin.com/company/your-company-name"
-                    class="social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+            </li>
+            <li class="social-media-button">
+              <a
+                href="https://twitter.com/your-twitter-handle"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="assets/icons/twitter.svg" alt="Twitter" />
+              </a>
+            </li>
+            <li class="social-media-button">
+              <a
+                href="https://www.youtube.com/your-youtube-channel"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="assets/icons/youtube.svg" alt="YouTube" />
+              </a>
+            </li>
+            <li class="social-media-button">
+              <a
+                href="https://www.linkedin.com/company/your-company-name"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
 
-    <!-- 
-    - #BACK TO TOP
-  -->
-
+    <!-- Back to Top Button -->
     <a
       href="#top"
       class="back-top-btn"
-      aria-label="back top top"
+      aria-label="Volver al inicio"
       data-back-top-btn
     >
       <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
     </a>
 
-    <!-- 
-    - custom js link
-  -->
+    <!-- Custom JavaScript -->
     <script src="./assets/js/script.js" defer></script>
 
-    <!-- 
-    - ionicon link
-  -->
+    <!-- Ionicons -->
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
