@@ -32,9 +32,9 @@
   --black_30: hsla(0, 0%, 0%, 0.3);
   --kappel: hsl(170, 75%, 41%);
   --white: hsl(0, 0%, 100%);
-  --linkedin: #0A66C2;
+  --linkedin: #0a66c2;
   --youtube: #e52d27;
-  --twitter: #1D9BF0;
+  --twitter: #1d9bf0;
 
   /**
    * gradient color
@@ -960,12 +960,11 @@ body {
   position: relative;
   width: 100%;
   max-width: 800px; /* Adjust this value to your desired maximum width */
-  padding-bottom: 40%; 
+  padding-bottom: 40%;
   height: 0;
   z-index: 3;
   margin: 0 auto; /* Center the container horizontally */
 }
-
 
 .map-container iframe {
   position: absolute;
@@ -1043,37 +1042,26 @@ body {
   font-size: var(--fs-5);
 }
 
-.footer-top {
-  display: grid;
-  gap: 30px;
-}
-
-.footer-top-inner {
+.footer .container {
   display: flex;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap; /* Add this line to allow wrapping on smaller screens */
 }
 
-.footer-brand,
 .footer-list {
   margin-right: 30px; /* Adjust the spacing between elements */
 }
 
+.footer-text {
+  margin-right: 20px; /* Adjust the spacing between the text and the list */
+}
+
 .footer-list {
-  margin-left: auto; /* Push the social icons to the right */
-}
-
-.footer-brand-text {
-  margin-block: 20px;
-}
-
-.footer-brand .wrapper {
   display: flex;
-  gap: 5px;
 }
 
-.footer-brand .wrapper .span {
-  font-weight: var(--fw-500);
-}
+
 
 .footer-link {
   transition: var(--transition-1);
@@ -1667,8 +1655,6 @@ body {
   }
 }
 
-
-
 .search-container {
   display: flex;
   align-items: center;
@@ -1711,7 +1697,6 @@ body {
   width: 0%;
 }
 
-
 .social-media-button {
   width: 4rem;
   height: 4rem;
@@ -1737,11 +1722,14 @@ body {
 }
 
 .social-media-button:hover:nth-child(1) {
-  background:  radial-gradient(
-      circle at 30% 107%, #fdf497 0%, 
-      #fdf497 5%, #fd5949 45%,
-      #d6249f 60%,#285AEB 90%
-  ); 
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
 }
 
 .social-media-button:hover:nth-child(2) {
