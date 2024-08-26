@@ -73,18 +73,18 @@ searchInput.addEventListener("keydown", (event) => {
 function performSearch() {
   const searchQuery = searchInput.value.trim().toLowerCase();
   if (searchQuery) {
-    removeHighlights(); // Remove previous highlights
+    removeHighlights();
     const matches = findMatches(searchQuery, pageContent);
     if (matches.length > 0) {
-      const firstMatchElement = highlightMatches(matches, mainContent); // Pass the <main> element
+      const firstMatchElement = highlightMatches(matches, mainContent);
       if (firstMatchElement) {
-        firstMatchElement.scrollIntoView({ behavior: "smooth" });
-        console.log(`Found ${matches.length} match(es) for "${searchQuery}"`);
+        firstMatchElement.scrollIntoView({ behavior: "smooth", block: "center" });
+        searchInput.setAttribute('aria-label', `Found ${matches.length} match(es) for "${searchQuery}"`);
       } else {
-        console.log(`No matches found for "${searchQuery}"`);
+        searchInput.setAttribute('aria-label', `No matches found for "${searchQuery}"`);
       }
     } else {
-      console.log(`No matches found for "${searchQuery}"`);
+      searchInput.setAttribute('aria-label', `No matches found for "${searchQuery}"`);
     }
   }
 }

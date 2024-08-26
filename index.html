@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap"
@@ -36,6 +36,8 @@
   </head>
 
   <body id="top">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Progress Bar -->
     <div class="progress__container">
       <div class="progress__bar"></div>
@@ -95,6 +97,13 @@
             <li class="navbar-item">
               <a href="#contact" class="navbar-link" data-nav-link>Contacto</a>
             </li>
+
+            <li class="navbar-item">
+              <a href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fedu.google.com%2F&service=eduone&sacu=1&rip=1" class="navbar-link" data-nav-link target="_blank" rel="noopener noreferrer">Login</a>
+            </li>
+            <li class="navbar-item">
+              <a href="#" class="navbar-link" data-nav-link onclick="alert('Please contact the administrator to request an account.')">Register</a>
+            </li>
           </ul>
         </nav>
 
@@ -112,7 +121,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <article>
         <!-- Hero Section -->
         <section
@@ -139,6 +148,7 @@
                 <ion-icon
                   name="arrow-forward-outline"
                   aria-hidden="true"
+                  aria-label="Ver cursos"
                 ></ion-icon>
               </a>
             </div>
@@ -151,6 +161,7 @@
                   height="300"
                   alt="Hero banner"
                   class="img-cover"
+                  loading="lazy"
                 />
               </div>
 
@@ -161,6 +172,7 @@
                   height="370"
                   alt="Hero banner"
                   class="img-cover"
+                  loading="lazy"
                 />
               </div>
 
@@ -476,58 +488,60 @@
       class="section contact"
       id="contact"
       aria-label="Contacto"
-      style="background-image: url('./assets/images/bg1.jpeg')"
+      style="background-image: url('./assets/images/bg.jpg'); background-size: cover; background-position: center;"
     >
       <div class="container">
-        <p class="section-subtitle">Contacto</p>
-        <h2 class="h2 section-title">Envíanos un mensaje</h2>
         <form
           action="https://formspree.io/f/moqgbkwg"
           method="post"
           class="contact-form"
+          novalidate
         >
+          <h2 class="h2 section-title">Envíanos un mensaje</h2>
           <div class="input-wrapper-grid">
-            <div class="input-group">
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Nombre"
-                  required
-                  class="input-field"
-                  aria-label="Nombre"
-                />
-              </div>
-              <div class="input-wrapper">
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Teléfono"
-                  required
-                  class="input-field"
-                  aria-label="Teléfono"
-                />
-              </div>
-              <div class="input-wrapper">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  class="input-field"
-                  aria-label="Email"
-                />
-              </div>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Nombre"
+                required
+                class="input-field"
+                aria-required="true"
+              />
             </div>
             <div class="input-wrapper">
-              <textarea
-                name="message"
-                placeholder="Mensaje"
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Teléfono"
                 required
-                class="input-field textarea-field"
-                aria-label="Mensaje"
-              ></textarea>
+                class="input-field"
+                aria-required="true"
+              />
             </div>
+          </div>
+          <div class="input-wrapper">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+              class="input-field"
+              aria-required="true"
+            />
+          </div>
+          <div class="input-wrapper">
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Mensaje"
+              required
+              class="textarea-field"
+              aria-required="true"
+            ></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
@@ -683,5 +697,46 @@
         fill="none"
       />
     </svg>
-  </div>
-</html>
+
+    <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z"
+        stroke-width="7"
+        fill="none"
+      />
+    </svg>
+
+    <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z"
+        stroke-width="7"
+        fill="none"
+      />
+    </svg>
+
+    <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z"
+        stroke-width="7"
+        fill="none"
+      />
+    </svg>
+
+    <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z"
+        stroke-width="7"
+        fill="none"
+      />
+    </svg>
+
+    <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="m2.46177,126.39581c10.12618,-0.06577 20.25237,-0.13151 30.37857,-0.19726c0.06666,-10.3997 0.13333,-20.7994 0.19999,-31.19908c10.07782,0 20.15564,0 30.23346,0c0,-10.46351 0,-20.927 0,-31.39051c10.33589,0 20.67178,0 31.00767,0c0,-10.20827 0,-20.41656 0,-30.62485c10.20829,0 20.41656,0 30.62485,0c0,-10.20829 0,-20.41658 0,-30.62487c15.18483,0 30.36965,0 45.55448,0c0,5.10414 0,10.20829 0,15.31243c-10.08071,0 -20.16136,0 -30.24206,0c0,10.33589 0,20.67178 0,31.00769c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33589 0,20.67178 0,31.00767c-10.20829,0 -20.41656,0 -30.62485,0c0,10.33591 0,20.6718 0,31.00767c-10.33589,0 -20.67178,0 -31.00767,0c0,10.46351 0,20.927 0,31.39049c-15.31243,0 -30.62485,0 -45.93728,0c0.68263,-5.07223 -1.16374,-10.79174 0.43769,-15.68938l0,0z"
+        stroke-width="7"
+        fill="none"
+      />
+    </svg>
+
+    <svg class="svg" xmlns="http://www.w3.org/2000/svg">
+      <path
