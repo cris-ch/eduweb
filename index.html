@@ -77,37 +77,47 @@
 
           <ul class="navbar-list">
             <li class="navbar-item">
-              <a href="#hero" class="navbar-link" data-nav-link>Home</a>
+              <a href="#hero" class="navbar-link" data-nav-link>
+                <ion-icon name="home-outline" aria-hidden="true"></ion-icon>
+                Home
+              </a>
             </li>
 
             <li class="navbar-item">
-              <a href="#courses" class="navbar-link" data-nav-link>Cursos</a>
+              <a href="#courses" class="navbar-link" data-nav-link>
+                <ion-icon name="book-outline" aria-hidden="true"></ion-icon>
+                Cursos
+              </a>
             </li>
 
             <li class="navbar-item">
-              <a href="#about" class="navbar-link" data-nav-link>Nosotros</a>
+              <a href="#about" class="navbar-link" data-nav-link>
+                <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+                Nosotros
+              </a>
             </li>
 
             <li class="navbar-item">
-              <a href="#location" class="navbar-link" data-nav-link
-                >Ubicación</a
-              >
+              <a href="#location" class="navbar-link" data-nav-link>
+                <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+                Ubicación
+              </a>
             </li>
 
             <li class="navbar-item">
-              <a href="#contact" class="navbar-link" data-nav-link>Contacto</a>
-            </li>
-
-            <li class="navbar-item">
-              <a href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fedu.google.com%2F&service=eduone&sacu=1&rip=1" class="navbar-link" data-nav-link target="_blank" rel="noopener noreferrer">Login</a>
-            </li>
-            <li class="navbar-item">
-              <a href="#" class="navbar-link" data-nav-link onclick="alert('Please contact the administrator to request an account.')">Register</a>
+              <a href="#contact" class="navbar-link" data-nav-link>
+                <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+                Contacto
+              </a>
             </li>
           </ul>
         </nav>
 
         <div class="header-actions">
+          <a href="#" class="btn btn-login">
+            <ion-icon name="log-in-outline" aria-hidden="true"></ion-icon>
+            Login
+          </a>
           <button
             class="header-action-btn"
             aria-label="Abrir menú"
@@ -488,7 +498,11 @@
       class="section contact"
       id="contact"
       aria-label="Contacto"
-      style="background-image: url('./assets/images/bg.jpg'); background-size: cover; background-position: center;"
+      style="
+        background-image: url('./assets/images/bg.jpg');
+        background-size: cover;
+        background-position: center;
+      "
     >
       <div class="container">
         <form
@@ -623,6 +637,24 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+
+    <script>
+      // Intersection Observer for scroll animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document
+        .querySelectorAll(".animate-on-scroll")
+        .forEach((el) => observer.observe(el));
+    </script>
   </body>
 
   <div class="wrap">
@@ -737,6 +769,5 @@
         fill="none"
       />
     </svg>
-
-    <svg class="svg" xmlns="http://www.w3.org/2000/svg">
-      <path
+  </div>
+</html>
