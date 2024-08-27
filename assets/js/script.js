@@ -1,14 +1,14 @@
 "use strict";
 
 /**
- * add event on element
+ * Add event on element(s)
+ * @param {Element|NodeList} elem - The element or list of elements
+ * @param {string} type - The event type
+ * @param {Function} callback - The callback function
  */
-
-const addEventOnElem = function (elem, type, callback) {
-  if (elem.length > 1) {
-    for (let i = 0; i < elem.length; i++) {
-      elem[i].addEventListener(type, callback);
-    }
+const addEventOnElem = (elem, type, callback) => {
+  if (elem instanceof NodeList) {
+    elem.forEach(el => el.addEventListener(type, callback));
   } else {
     elem.addEventListener(type, callback);
   }
@@ -141,16 +141,14 @@ addEventOnElem(window, "scroll", activeElem);
 //   });
 // }
 
-// Scrolling bar
 
 // Scrolling Bar
 const body = document.body;
 const progressBar = document.querySelector('.progress__bar');
 
 const updateProgress = () => {
-  let scrollPos =
-    (window.scrollY / (body.scrollHeight - window.innerHeight)) * 100;
-  progressBar.style.width = `${scrollPos}%`;
+  const scrollPos = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  document.querySelector('.progress__bar').style.width = `${scrollPos}%`;
   requestAnimationFrame(updateProgress);
 };
 
