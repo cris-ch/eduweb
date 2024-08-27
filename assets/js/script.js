@@ -57,89 +57,89 @@ const activeElem = function () {
 addEventOnElem(window, "scroll", activeElem);
 
 // Search Functionality
-const searchInput = document.querySelector(".search-input");
-const searchBtn = document.querySelector(".search-btn");
-const mainContent = document.querySelector("main"); // Select the <main> element
-const pageContent = mainContent.innerText; // Get the text content of the main content area
+// const searchInput = document.querySelector(".search-input");
+// const searchBtn = document.querySelector(".search-btn");
+// const mainContent = document.querySelector("main"); // Select the <main> element
+// const pageContent = mainContent.innerText; // Get the text content of the main content area
 
-searchBtn.addEventListener("click", performSearch);
+// searchBtn.addEventListener("click", performSearch);
 
-searchInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    performSearch();
-  }
-});
+// searchInput.addEventListener("keydown", (event) => {
+//   if (event.key === "Enter") {
+//     performSearch();
+//   }
+// });
 
-function performSearch() {
-  const searchQuery = searchInput.value.trim().toLowerCase();
-  if (searchQuery) {
-    removeHighlights();
-    const matches = findMatches(searchQuery, pageContent);
-    if (matches.length > 0) {
-      const firstMatchElement = highlightMatches(matches, mainContent);
-      if (firstMatchElement) {
-        firstMatchElement.scrollIntoView({ behavior: "smooth", block: "center" });
-        searchInput.setAttribute('aria-label', `Found ${matches.length} match(es) for "${searchQuery}"`);
-      } else {
-        searchInput.setAttribute('aria-label', `No matches found for "${searchQuery}"`);
-      }
-    } else {
-      searchInput.setAttribute('aria-label', `No matches found for "${searchQuery}"`);
-    }
-  }
-}
+// function performSearch() {
+//   const searchQuery = searchInput.value.trim().toLowerCase();
+//   if (searchQuery) {
+//     removeHighlights();
+//     const matches = findMatches(searchQuery, pageContent);
+//     if (matches.length > 0) {
+//       const firstMatchElement = highlightMatches(matches, mainContent);
+//       if (firstMatchElement) {
+//         firstMatchElement.scrollIntoView({ behavior: "smooth", block: "center" });
+//         searchInput.setAttribute('aria-label', `Found ${matches.length} match(es) for "${searchQuery}"`);
+//       } else {
+//         searchInput.setAttribute('aria-label', `No matches found for "${searchQuery}"`);
+//       }
+//     } else {
+//       searchInput.setAttribute('aria-label', `No matches found for "${searchQuery}"`);
+//     }
+//   }
+// }
 
-function findMatches(query, content) {
-  const matches = [];
-  const regex = new RegExp(query, "gi");
-  const textNodes = document.createTreeWalker(
-    mainContent,
-    NodeFilter.SHOW_TEXT
-  ); // Use the <main> element
-  let currentNode;
+// function findMatches(query, content) {
+//   const matches = [];
+//   const regex = new RegExp(query, "gi");
+//   const textNodes = document.createTreeWalker(
+//     mainContent,
+//     NodeFilter.SHOW_TEXT
+//   ); // Use the <main> element
+//   let currentNode;
 
-  while ((currentNode = textNodes.nextNode())) {
-    const match = currentNode.textContent.match(regex);
-    if (match) {
-      matches.push(...match);
-    }
-  }
+//   while ((currentNode = textNodes.nextNode())) {
+//     const match = currentNode.textContent.match(regex);
+//     if (match) {
+//       matches.push(...match);
+//     }
+//   }
 
-  return matches;
-}
+//   return matches;
+// }
 
-function highlightMatches(matches, container) {
-  const regex = new RegExp(`(${matches.join("|")})`, "gi");
-  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT); // Use the <main> element
-  let currentNode;
-  let firstMatchElement = null;
+// function highlightMatches(matches, container) {
+//   const regex = new RegExp(`(${matches.join("|")})`, "gi");
+//   const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT); // Use the <main> element
+//   let currentNode;
+//   let firstMatchElement = null;
 
-  while ((currentNode = walker.nextNode())) {
-    const newNode = currentNode.textContent.replace(regex, (match) => {
-      if (!firstMatchElement) {
-        firstMatchElement = currentNode.parentNode;
-      }
-      return `<mark>${match}</mark>`;
-    });
-    if (newNode !== currentNode.textContent) {
-      const newElement = document.createElement("span");
-      newElement.innerHTML = newNode;
-      const parentNode = currentNode.parentNode;
-      parentNode.replaceChild(newElement, currentNode);
-    }
-  }
+//   while ((currentNode = walker.nextNode())) {
+//     const newNode = currentNode.textContent.replace(regex, (match) => {
+//       if (!firstMatchElement) {
+//         firstMatchElement = currentNode.parentNode;
+//       }
+//       return `<mark>${match}</mark>`;
+//     });
+//     if (newNode !== currentNode.textContent) {
+//       const newElement = document.createElement("span");
+//       newElement.innerHTML = newNode;
+//       const parentNode = currentNode.parentNode;
+//       parentNode.replaceChild(newElement, currentNode);
+//     }
+//   }
 
-  return firstMatchElement;
-}
+//   return firstMatchElement;
+// }
 
-function removeHighlights() {
-  const marks = document.querySelectorAll("mark");
-  marks.forEach((mark) => {
-    const parentNode = mark.parentNode;
-    const textNode = document.createTextNode(mark.textContent);
-    parentNode.replaceChild(textNode, mark);
-  });
-}
+// function removeHighlights() {
+//   const marks = document.querySelectorAll("mark");
+//   marks.forEach((mark) => {
+//     const parentNode = mark.parentNode;
+//     const textNode = document.createTextNode(mark.textContent);
+//     parentNode.replaceChild(textNode, mark);
+//   });
+// }
 
 // Scrolling bar
 
