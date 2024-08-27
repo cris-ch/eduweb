@@ -29,8 +29,6 @@
 
     <!-- Preload Images -->
     <link rel="preload" as="image" href="./assets/images/hero-bg.svg" />
-    <link rel="preload" as="image" href="./assets/images/hero-banner-1.jpg" />
-    <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg" />
     <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg" />
     <link rel="preload" as="image" href="./assets/images/hero-shape-2.png" />
   </head>
@@ -78,36 +76,36 @@
           <ul class="navbar-list">
             <li class="navbar-item">
               <a href="#hero" class="navbar-link" data-nav-link>
-                <ion-icon name="home-outline" aria-hidden="true"></ion-icon>
-                Home
+                <img src="./assets/images/home1.png" alt="Home" width="20" height="20" >
+                Inicio
               </a>
             </li>
 
             <li class="navbar-item">
               <a href="#courses" class="navbar-link" data-nav-link>
-                <ion-icon name="book-outline" aria-hidden="true"></ion-icon>
+                <img src="./assets/images/book1.png" alt="Cursos" width="20" height="20" >
                 Cursos
               </a>
             </li>
 
             <li class="navbar-item">
               <a href="#about" class="navbar-link" data-nav-link>
-                <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+                <img src="./assets/images/about1.png" alt="Nosotros" width="20" height="20" >
                 Nosotros
               </a>
             </li>
 
             <li class="navbar-item">
               <a href="#location" class="navbar-link" data-nav-link>
-                <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+                <img src="./assets/images/location1.png" alt="Ubicación" width="20" height="20" >
                 Ubicación
               </a>
             </li>
 
             <li class="navbar-item">
               <a href="#contact" class="navbar-link" data-nav-link>
-                <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
-                Contacto
+                <img src="./assets/images/contact.png" alt="Contacto" width="20" height="20" >
+              Contacto
               </a>
             </li>
           </ul>
@@ -143,8 +141,19 @@
           <div class="container">
             <div class="hero-content">
               <h1 class="h1 section-title">
-                Descubre la Magia del Inglés en <br />
-                <span class="span">A Plus</span> Academy
+                Unlock a world of <br />
+                <span class="flip-container">
+                  <span class="flip">
+                    <span><span>Fun</span></span>
+                    <span><span>Adventure</span></span>
+                    <span><span>Opportunities</span></span>
+                    <span><span>Imagination</span></span>
+                    <span><span>Friendships</span></span>
+                    <span><span>Creativity</span></span>
+                  </span>
+                </span>
+                <br />
+                with <span class="span">A Plus</span> Academy
               </h1>
 
               <p class="hero-text">
@@ -185,15 +194,7 @@
                   loading="lazy"
                 />
               </div>
-
-              <img
-                src="./assets/images/hero-shape-111.png"
-                width="380"
-                height="190"
-                alt=""
-                class="shape hero-shape-1"
-                aria-hidden="true"
-              />
+              
 
               <img
                 src="./assets/images/hero-shape-2.png"
@@ -360,16 +361,6 @@
               </div>
 
               <img
-                src="./assets/images/about-shape-2.svg"
-                width="371"
-                height="220"
-                loading="lazy"
-                alt=""
-                class="shape about-shape-2"
-                aria-hidden="true"
-              />
-
-              <img
                 src="./assets/images/about-shape-3.png"
                 width="722"
                 height="528"
@@ -424,15 +415,15 @@
 
               <li>
                 <div class="stats-card" style="--color: 351, 83%, 61%">
-                  <h3 class="card-title">960hs</h3>
+                  <h3 class="card-title">8+</h3>
 
-                  <p class="card-text">Clases Cada Año</p>
+                  <p class="card-text">Niveles de Inglés</p>
                 </div>
               </li>
 
               <li>
                 <div class="stats-card" style="--color: 260, 100%, 67%">
-                  <h3 class="card-title">95%</h3>
+                  <h3 class="card-title">98%</h3>
 
                   <p class="card-text">Satisfacción</p>
                 </div>
@@ -451,10 +442,9 @@
 
         <!-- Location Section -->
         <section
-          class="section blog has-bg-image"
+          class="section map has-bg-image"
           id="location"
           aria-label="Ubicación"
-          style="background-image: url('./assets/images/blog-bg.svg')"
         >
           <div class="container">
             <p class="section-subtitle">Ubicación</p>
