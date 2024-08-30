@@ -139,11 +139,11 @@
         <div class="header-actions">
           <a href="#" class="btn btn-login">
             <img
-            src="./assets/images/login1.png"
-            alt="Contacto"
-            width="20"
-            height="20"
-          />
+              src="./assets/images/login1.png"
+              alt="Contacto"
+              width="20"
+              height="20"
+            />
             Login
           </a>
           <button
@@ -166,8 +166,8 @@
           class="section hero has-bg-image"
           id="hero"
           aria-label="Inicio"
-          style="background-image: url('./assets/images/hero-bg.svg')"
-        >
+          >
+          <div class="hero-bg"></div>
           <div class="container">
             <div class="hero-content">
               <h1 class="h1 section-title">
@@ -203,7 +203,7 @@
             </div>
 
             <figure class="hero-banner">
-              <div class="img-holder one" style="--width: 270; --height: 300">
+              <div class="img-holder one hide-on-mobile" style="--width: 270; --height: 300">
                 <img
                   src="./assets/images/hero-3.jpeg"
                   width="270"
@@ -214,7 +214,7 @@
                 />
               </div>
 
-              <div class="img-holder two" style="--width: 240; --height: 370">
+              <div class="img-holder two hide-on-mobile" style="--width: 240; --height: 370">
                 <img
                   src="./assets/images/hero-2.jpeg"
                   width="240"
@@ -242,9 +242,10 @@
           <div class="container">
             <p class="section-subtitle">CURSOS</p>
 
-            <h2 class="h2 section-title">
-              Conoce Nuestros <span class="span">Cursos</span> Para Todos Los
-              Niveles.
+            <h2 class="h2 section-title courses-title">
+              <span class="animate-text">Conoce Nuestros</span>
+              <span class="span animate-highlight">Cursos</span>
+              <span class="animate-text">Para Todos Los Niveles.</span>
             </h2>
 
             <p class="section-text">
@@ -378,15 +379,17 @@
         <section class="section about" id="about" aria-label="Sobre nosotros">
           <div class="container">
             <figure class="about-banner">
-              <div class="img-holder" style="--width: 520; --height: 370">
-                <img
-                  src="./assets/images/about-banner.jpeg"
+              <div class="video-container" style="--width: 520; --height: 370">
+                <video
+                  src="./assets/videos/us-video.mp4"
                   width="520"
                   height="370"
-                  loading="lazy"
-                  alt="Imagen sobre nosotros"
-                  class="img-cover"
-                />
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  class="video-cover"
+                ></video>
               </div>
 
               <img
@@ -518,7 +521,7 @@
       id="contact"
       aria-label="Contacto"
       style="
-        background-image: url('./assets/images/bg.jpg');
+        background-image: url('./assets/images/bg1.jpeg');
         background-size: cover;
         background-position: center;
       "

@@ -550,7 +550,6 @@ body {
 
 .hero .container {
   display: grid;
-  gap: 40px;
 }
 
 .hero-text {
@@ -586,6 +585,8 @@ body {
   padding-block-start: calc(var(--section-padding) + 60px);
   text-align: center;
   overflow: hidden;
+  padding-bottom: 100px; /* Adjust this value to control the curve's visibility */
+
 }
 
 .hero-content {
@@ -594,6 +595,24 @@ body {
 
 .hero .section-title {
   margin-bottom: 20px;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/orange-yellow-paper-sheets.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
 }
 
 .flip-container {
@@ -732,6 +751,12 @@ body {
   }
 }
 
+@media (max-width: 767px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
 /*-----------------------------------*\
   #CATEGORY
 \*-----------------------------------*/
@@ -787,6 +812,48 @@ body {
   max-width: max-content;
   margin-inline: auto;
   border-radius: var(--radius-5);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes highlightPulse {
+  0%, 100% {
+    color: var(--radical-red);
+    transform: scale(1);
+  }
+  50% {
+    color: var(--selective-yellow);
+    transform: scale(1.1);
+  }
+}
+
+.courses-title .animate-text {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.courses-title .animate-text:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.courses-title .animate-highlight {
+  display: inline-block;
+  animation: highlightPulse 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.courses-title .animate-text:nth-child(3) {
+  animation-delay: 0.4s;
 }
 
 /*-----------------------------------*\
@@ -857,6 +924,24 @@ body {
 .about-item .span {
   color: var(--eerie-black-1);
   font-family: var(--ff-league_spartan);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: var(--width, 520px);
+  aspect-ratio: var(--width) / var(--height);
+  overflow: hidden;
+  border-radius: var(--radius-10);
+}
+
+.video-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /*-----------------------------------*\
@@ -1989,7 +2074,7 @@ body {
     max-width: 100%;
   }
 
-  .hero,
+
   .about,
   .category,
   .course,
