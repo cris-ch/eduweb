@@ -31,9 +31,15 @@
     <link rel="preload" as="image" href="./assets/images/hero-bg.svg" />
     <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg" />
     <link rel="preload" as="image" href="./assets/images/hero-shape-2.png" />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
 
-  <body id="top">
+  <body id="top" class="home-page">
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Progress Bar -->
@@ -490,6 +496,50 @@
             </div>
           </div>
         </section>
+
+        <!-- Testimonials Section -->
+        <section class="section testimonials" id="testimonials" aria-label="Testimonials">
+          <div class="container">
+            <p class="section-subtitle animate-on-scroll">What Our Students Say</p>
+
+            <h2 class="h2 section-title animate-on-scroll">
+              Student <span class="span">Testimonials</span>
+            </h2>
+
+            <p class="section-text animate-on-scroll">
+              Hear from our students about their experiences learning English with A Plus Academy.
+            </p>
+
+            <div class="testimonial-carousel animate-on-scroll">
+              <div class="carousel-container">
+                <div class="carousel-track">
+                  <!-- Testimonial 1 -->
+                  <div class="testimonial-card">
+                    <p class="testimonial-text">"Excelente profesora!! Mis hijos y nosotros súper contentos con el progreso y cómo les enseña. Lo recomiendo totalmente."</p>
+                    <h3 class="testimonial-name">Yolanda Garcia</h3>
+                    <p class="testimonial-position">Student Parent</p>
+                  </div>
+
+                  <!-- Testimonial 2 -->
+                  <div class="testimonial-card">
+                    <p class="testimonial-text">"Una excelente profesional, mi niña(5 años) aprende mucho entre juego y canciones. Hace que aprender sea divertido!!!"</p>
+                    <h3 class="testimonial-name">Maria Madyudya</h3>
+                    <p class="testimonial-position">Student Parent</p>
+                  </div>
+
+                  <!-- Testimonial 3 -->
+                  <div class="testimonial-card">
+                    <p class="testimonial-text">"Un trato muy agradable, gran profesora de inglés y paula está muy contenta con ella. Recomiendo 100%"</p>
+                    <h3 class="testimonial-name">Montse Moreno Borrego</h3>
+                    <p class="testimonial-position">Student Parent</p>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-button prev" aria-label="Previous testimonial">❮</button>
+              <button class="carousel-button next" aria-label="Next testimonial">❯</button>
+            </div>
+          </div>
+        </section>
       </article>
     </main>
 
@@ -636,6 +686,61 @@
       document
         .querySelectorAll(".animate-on-scroll")
         .forEach((el) => observer.observe(el));
+    </script>
+
+    <script>
+      // Testimonial Carousel
+      const track = document.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      const nextButton = document.querySelector('.carousel-button.next');
+      const prevButton = document.querySelector('.carousel-button.prev');
+
+      let currentIndex = 0;
+
+      const moveToSlide = (index) => {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+
+        track.style.transform = `translateX(-${index * 100}%)`;
+        slides.forEach((slide, i) => {
+          if (i === index) {
+            slide.classList.add('current-slide');
+          } else {
+            slide.classList.remove('current-slide');
+          }
+        });
+        currentIndex = index;
+      };
+
+      // Next button
+      nextButton.addEventListener('click', () => {
+        moveToSlide(currentIndex + 1);
+      });
+
+      // Prev button
+      prevButton.addEventListener('click', () => {
+        moveToSlide(currentIndex - 1);
+      });
+
+      // Auto-play
+      let autoPlay = setInterval(() => {
+        moveToSlide(currentIndex + 1);
+      }, 5000); // Change slide every 5 seconds
+
+      // Pause auto-play on hover
+      track.addEventListener('mouseenter', () => {
+        clearInterval(autoPlay);
+      });
+
+      // Resume auto-play when mouse leaves
+      track.addEventListener('mouseleave', () => {
+        autoPlay = setInterval(() => {
+          moveToSlide(currentIndex + 1);
+        }, 5000);
+      });
+
+      // Initialize
+      moveToSlide(0);
     </script>
   </body>
 </html>
