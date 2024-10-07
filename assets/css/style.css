@@ -243,7 +243,18 @@ body {
 
 .section-title {
   --color: var(--radical-red);
-  text-align: left; /* Changed from center to left */
+  text-align: left;
+}
+
+/* New styles for centering section titles on the home page */
+.home-page .section-title {
+  text-align: center;
+}
+
+/* If you want to center other elements related to section titles on the home page */
+.home-page .section-subtitle,
+.home-page .section-text {
+  text-align: center;
 }
 
 .section-title .span {
@@ -671,246 +682,6 @@ body {
   background-color: #20b2aa;
 }
 
-@keyframes flip {
-  0%,
-  15% {
-    transform: translateY(0);
-  }
-  16%,
-  31% {
-    transform: translateY(-100px);
-  }
-  32%,
-  47% {
-    transform: translateY(-200px);
-  }
-  48%,
-  63% {
-    transform: translateY(-300px);
-  }
-  64%,
-  79% {
-    transform: translateY(-400px);
-  }
-  80%,
-  95% {
-    transform: translateY(-500px);
-  }
-  96%,
-  100% {
-    transform: translateY(0);
-  }
-}
-
-/* Ensure the hero section stays in place */
-.hero .container {
-  position: relative;
-  z-index: 1;
-}
-
-/* Adjust the background image */
-.hero.has-bg-image {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .flip-container {
-    height: 35px;
-  }
-
-  .flip > span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 35px;
-  }
-
-  @keyframes flip {
-    0%,
-    15% {
-      transform: translateY(0);
-    }
-    16%,
-    31% {
-      transform: translateY(-35px);
-    }
-    32%,
-    47% {
-      transform: translateY(-70px);
-    }
-    48%,
-    63% {
-      transform: translateY(-105px);
-    }
-    64%,
-    79% {
-      transform: translateY(-140px);
-    }
-    80%,
-    95% {
-      transform: translateY(-175px);
-    }
-    96%,
-    100% {
-      transform: translateY(0);
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .hide-on-mobile {
-    display: none;
-  }
-}
-
-/*-----------------------------------*\
-  #CATEGORY
-\*-----------------------------------*/
-
-.category {
-  padding-block: 80px;
-  background-color: var(--cultured);
-}
-
-.category .container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.grid-list {
-  display: grid;
-  gap: 30px;
-}
-
-.category-card {
-  background-color: hsla(var(--color), 0.1);
-  padding: 40px 30px;
-  border-radius: var(--radius-5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.card-title {
-  margin-block: 20px 15px;
-  min-height: 60px;
-}
-
-.card-text {
-  margin-bottom: 20px;
-  flex-grow: 1;
-}
-
-.card-link {
-  display: inline-block;
-  padding: 8px 15px; /* Reduced padding */
-  background-color: hsl(var(--color));
-  color: var(--white);
-  text-decoration: none;
-  border-radius: var(--radius-5);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  text-align: center;
-  font-weight: var(--fw-600);
-  font-size: var(--fs-6); /* Smaller font size */
-  margin-top: auto;
-  align-self: flex-end; /* Align to the right */
-  margin-left: auto; /* Push to the right */
-}
-
-.card-link:hover {
-  background-color: hsl(var(--color), 80%, 30%);
-  transform: scale(1.05);
-}
-
-/* Ensure text is readable on light backgrounds */
-.category-card[style*="170, 75%, 41%"] .card-link,
-.category-card[style*="42, 94%, 55%"] .card-link {
-  color: var(--eerie-black-1);
-}
-
-/* Adjust hover state for light buttons */
-.category-card[style*="170, 75%, 41%"] .card-link:hover,
-.category-card[style*="42, 94%, 55%"] .card-link:hover {
-  background-color: hsl(var(--color), 80%, 20%);
-  color: var(--white);
-}
-
-/* Adjust grid layout for better responsiveness */
-@media (min-width: 768px) {
-  .grid-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 992px) {
-  .grid-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Ensure consistent card height on smaller screens */
-@media (max-width: 767px) {
-  .category-card {
-    height: auto;
-  }
-
-  .card-title {
-    min-height: auto;
-  }
-}
-
-.category .section-subtitle {
-  color: var(--radical-red);
-}
-
-.category .section-title {
-  --color: var(--kappel);
-}
-
-.category .section-text {
-  margin-block-end: 40px;
-}
-
-.category-card .card-icon {
-  background-color: hsla(var(--color), 0.2);
-  width: 80px;
-  height: 80px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-circle);
-  margin-inline: auto;
-  margin-block-end: 30px;
-}
-
-.category-card .card-text {
-  color: var(--eerie-black-1);
-  font-size: var(--fs-5);
-  margin-block: 15px 25px;
-}
-
-.category-card .card-badge {
-  background-color: hsla(var(--color), 0.2);
-  color: hsl(var(--color));
-  font-size: var(--fs-5);
-  font-weight: var(--fw-500);
-  padding: 2px 18px;
-  max-width: max-content;
-  margin-inline: auto;
-  border-radius: var(--radius-5);
-}
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1335,44 +1106,35 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Add this line to allow wrapping on smaller screens */
 }
 
-.footer .container > div {
-  padding: 10px; /* Adjust the value as needed */
+.footer-text {
+  margin-right: 20px; /* Add some space between text and buttons */
 }
 
-.followus-text {
-  color: var(--white);
-}
-
-.footer-link {
-  transition: var(--transition-1);
-}
-
-.footer-link:is(:hover, :focus) {
-  color: var(--kappel);
-}
-
-.footer-list-title {
-  color: var(--white);
-  font-family: var(--ff-league_spartan);
-  font-size: var(--fs-3);
-  font-weight: var(--fw-600);
-  margin-block-end: 10px;
-}
-
-.footer-list .footer-link {
-  padding-block: 5px;
-}
-
+/* Social media buttons container */
 .social-list {
   display: flex;
-  gap: 25px;
+  gap: 15px; /* Adjust the space between buttons */
 }
 
-.social-link {
-  font-size: 30px;
+/* Individual social media button */
+.social-media-button {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  outline: 2px solid white;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-media-button img {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s;
 }
 
 /* Responsive adjustments */
@@ -1382,8 +1144,9 @@ body {
     align-items: center;
   }
 
-  .footer-text, .footer-list {
-    text-align: center;
+  .footer-text {
+    margin-right: 0;
+    margin-bottom: 15px;
   }
 
   .social-list {
@@ -1887,8 +1650,9 @@ body {
   outline: 2px solid white;
   cursor: pointer;
   transition: all 0.3s;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .social-media-button:hover {
@@ -1897,6 +1661,8 @@ body {
 }
 
 .social-media-button img {
+  width: 24px; /* Adjust this value as needed */
+  height: 24px; /* Adjust this value as needed */
   transition: all 0.3s;
 }
 
@@ -2238,6 +2004,8 @@ body {
   .social-list {
     justify-content: center;
   }
+
+  
 
   .wrap {
     overflow-x: hidden;
@@ -2996,4 +2764,187 @@ main {
 
 .course-list li strong {
   font-weight: 700; /* or you can use 'bold' */
+}
+
+.home-page .left-aligned {
+  text-align: left;
+}
+
+/* Testimonials Section */
+.testimonials {
+  background-color: var(--isabelline);
+  padding-block: 60px;
+}
+
+.testimonial-carousel {
+  position: relative;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 40px;
+  overflow: hidden;
+}
+
+.carousel-container {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.testimonial-card {
+  flex: 0 0 100%;
+  padding: 30px 50px;
+  background-color: var(--white);
+  border-radius: var(--radius-10);
+  box-shadow: var(--shadow-2);
+  text-align: center;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--kappel);
+  color: var(--white);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.carousel-button:hover {
+  background-color: var(--radical-red);
+}
+
+.carousel-button.prev {
+  left: 0;
+}
+
+.carousel-button.next {
+  right: 0;
+}
+
+/* Ensure buttons are visible on mobile */
+@media (max-width: 768px) {
+  .carousel-button {
+    display: block;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+  
+  .testimonial-carousel {
+    padding: 0 35px;
+  }
+}
+
+/* Course cards styling */
+.category-card {
+  background-color: hsla(var(--color), 0.1);
+  padding: 40px 30px;
+  border-radius: var(--radius-5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.category-card .card-icon {
+  background-color: hsla(var(--color), 0.2);
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-circle);
+  margin-inline: auto;
+  margin-block-end: 30px;
+}
+
+.category-card .card-title {
+  color: var(--eerie-black-1);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+  min-height: 40px;
+  text-align: center; /* Center the title */
+}
+
+.category-card .card-text {
+  color: var(--gray-web);
+  font-size: var(--fs-5);
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+.category-card .card-link {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: hsl(var(--color));
+  color: var(--white);
+  text-decoration: none;
+  border-radius: var(--radius-5);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  font-weight: var(--fw-600);
+  font-size: var(--fs-6);
+  margin-top: auto;
+  align-self: center; /* Center the button */
+}
+
+.category-card .card-link:hover {
+  background-color: hsl(var(--color), 80%, 30%);
+  transform: scale(1.05);
+}
+
+/* Ensure text is readable on light backgrounds */
+.category-card[style*="170, 75%, 41%"] .card-link,
+.category-card[style*="42, 94%, 55%"] .card-link {
+  color: var(--eerie-black-1);
+}
+
+/* Adjust hover state for light buttons */
+.category-card[style*="170, 75%, 41%"] .card-link:hover,
+.category-card[style*="42, 94%, 55%"] .card-link:hover {
+  background-color: hsl(var(--color), 80%, 20%);
+  color: var(--white);
+}
+
+/* Grid layout for course cards */
+.grid-list {
+  display: grid;
+  gap: 30px;
+}
+
+@media (min-width: 768px) {
+  .grid-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .grid-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Ensure consistent card height on smaller screens */
+@media (max-width: 767px) {
+  .category-card {
+    height: auto;
+  }
+
+  .category-card .card-title {
+    min-height: auto;
+  }
 }
