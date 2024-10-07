@@ -50,91 +50,122 @@
     - #HEADER
   -->
 
-    <header class="header" data-header>
-      <div class="container">
-        <a href="#" class="logo">
-          <img
-            src="./assets/images/logo-aplus.png"
-            width="100"
-            height="20"
-            alt="EduWeb logo"
-          />
-        </a>
+  <header class="header" data-header>
+    <div class="container">
+      <a href="#" class="logo" aria-label="A Plus logo">
+        <img
+          src="./assets/images/logo-aplus.png"
+          width="100"
+          height="20"
+          alt="A Plus logo"
+        />
+      </a>
 
-        <nav class="navbar" data-navbar>
-          <div class="wrapper">
-            <a href="#" class="logo">
-              <img
-                src="./assets/images/logo.svg"
-                width="162"
-                height="50"
-                alt="EduWeb logo"
-              />
-            </a>
+      <nav class="navbar" data-navbar>
+        <div class="wrapper">
+          <a href="#" class="logo" aria-label="A Plus logo">
+            <img
+              src="./assets/images/logo-aplus.png"
+              width="100"
+              height="50"
+              alt="A Plus logo"
+            />
+          </a>
 
-            <button
-              class="nav-close-btn"
-              aria-label="close menu"
-              data-nav-toggler
-            >
-              <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-            </button>
-          </div>
-
-          <ul class="navbar-list">
-            <li class="navbar-item">
-              <a href="#home" class="navbar-link" data-nav-link>Home</a>
-            </li>
-
-            <li class="navbar-item">
-              <a href="#about" class="navbar-link" data-nav-link>About</a>
-            </li>
-
-            <li class="navbar-item">
-              <a href="#courses" class="navbar-link" data-nav-link>Courses</a>
-            </li>
-
-            <li class="navbar-item">
-              <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-            </li>
-
-            <li class="navbar-item">
-              <a href="#" class="navbar-link" data-nav-link>Contact</a>
-            </li>
-          </ul>
-        </nav>
-
-        <div class="header-actions">
           <button
-            class="header-action-btn"
-            aria-label="toggle search"
-            title="Search"
+            class="nav-close-btn"
+            aria-label="Close menu"
+            data-nav-toggler
           >
-            <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
           </button>
+        </div>
 
-          <!--
-        <button class="header-action-btn" aria-label="cart" title="Cart">
-          <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <a href="#hero" class="navbar-link" data-nav-link>
+              <img
+                src="./assets/images/home1.png"
+                alt="Home"
+                width="20"
+                height="20"
+              />
+              Home
+            </a>
+          </li>
 
-          <span class="btn-badge">0</span>
-        </button>
+          <li class="navbar-item">
+            <a href="#courses" class="navbar-link" data-nav-link>
+              <img
+                src="./assets/images/book1.png"
+                alt="Courses"
+                width="20"
+                height="20"
+              />
+              Courses
+            </a>
+          </li>
 
-        <a href="#" class="btn has-before">
-          <span class="span">Try for free</span>
+          <li class="navbar-item">
+            <a href="#about" class="navbar-link" data-nav-link>
+              <img
+                src="./assets/images/about1.png"
+                alt="About Us"
+                width="20"
+                height="20"
+              />
+              About Us
+            </a>
+          </li>
 
-          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+          <li class="navbar-item">
+            <a href="#location" class="navbar-link" data-nav-link>
+              <img
+                src="./assets/images/location1.png"
+                alt="Location"
+                width="20"
+                height="20"
+              />
+              Location
+            </a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#contact" class="navbar-link" data-nav-link>
+              <img
+                src="./assets/images/contact.png"
+                alt="Contact"
+                width="20"
+                height="20"
+              />
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#" class="btn btn-login">
+          <img
+            src="./assets/images/login1.png"
+            alt="Login"
+            width="20"
+            height="20"
+          />
+          Login
         </a>
-
-        <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-          <ion-icon name="men u-outline" aria-hidden="true"></ion-icon>
+        <button
+          class="header-action-btn"
+          aria-label="Open menu"
+          data-nav-toggler
+        >
+          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
         </button>
-
-        --></div>
-
-        <div class="overlay" data-nav-toggler data-overlay></div>
       </div>
-    </header>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+    </div>
+  </header>
 
     <main>
       <article>
@@ -143,923 +174,229 @@
         - #CATEGORY
       -->
 
-        <section class="section category" aria-label="category">
+        <section class="section category" id="courses" aria-label="Courses">
           <div class="container">
-            <p class="section-subtitle">CURSOS</p>
+            <p class="section-subtitle">OUR ENGLISH COURSES</p>
 
             <h2 class="h2 section-title">
-              Conoce Nuestros <span class="span">Cursos</span> Para Todos Los
-              Niveles.
+              Tailored English Courses <span class="span">for Every Level</span>
             </h2>
 
             <p class="section-text">
-              Desde principiantes hasta expertos, descubre la opción perfecta
-              para tu nivel
+              From beginners to advanced learners, we offer comprehensive courses to help you achieve your English language goals
             </p>
 
             <ul class="grid-list">
-              <li>
-                <div a href="courses.html" class="category-card" style="--color: 170, 75%, 41%">
+              <li id="a2-key">
+                <div class="category-card" style="--color: 170, 75%, 41%">
                   <div class="card-icon">
-                    <img
-                      src="./assets/images/category-1.svg"
-                      width="40"
-                      height="40"
-                      loading="lazy"
-                      alt="Online Degree Programs"
-                      class="img"
-                    />
+                    <img src="./assets/images/newbie-1.png" width="50" height="50" loading="lazy" alt="A2 Key icon" class="img" />
                   </div>
 
-                  <h3 class="h3">
-                    <class="card-title">Online Degree Programs</a>
-                  </h3>
+                  <h3 class="h3 card-title">A2 Key (KET) Preparation</h3>
 
                   <p class="card-text">
-                    Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                    Our A2 Key course is perfect for beginners looking to build a strong foundation in English. We focus on:
                   </p>
+                  <ul>
+                    <li>Essential vocabulary and grammar structures</li>
+                    <li>Basic reading and writing skills</li>
+                    <li>Everyday listening and speaking practice</li>
+                    <li>Confidence-building exercises</li>
+                  </ul>
+                  <p>By the end of this course, you'll be able to communicate in simple, everyday situations.</p>
 
-                  <span class="card-badge">7 Courses</span>
+                  <span class="card-badge">Elementary Level</span>
                 </div>
               </li>
 
-              <li>
+              <li id="b1-preliminary">
                 <div class="category-card" style="--color: 351, 83%, 61%">
                   <div class="card-icon">
-                    <img
-                      src="./assets/images/category-2.svg"
-                      width="40"
-                      height="40"
-                      loading="lazy"
-                      alt="Non-Degree Programs"
-                      class="img"
-                    />
+                    <img src="./assets/images/intermediate-1.png" width="50" height="50" loading="lazy" alt="B1 Preliminary icon" class="img" />
                   </div>
 
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Non-Degree Programs</a>
-                  </h3>
+                  <h3 class="h3 card-title">B1 Preliminary (PET) Preparation</h3>
 
                   <p class="card-text">
-                    Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                    Our B1 Preliminary course helps you develop practical English skills for everyday use. We emphasize:
                   </p>
+                  <ul>
+                    <li>Expanding vocabulary for various topics</li>
+                    <li>Intermediate grammar and sentence structures</li>
+                    <li>Reading comprehension and writing techniques</li>
+                    <li>Listening skills and conversational practice</li>
+                  </ul>
+                  <p>This course will enable you to confidently navigate most everyday situations in English.</p>
 
-                  <span class="card-badge">4 Courses</span>
+                  <span class="card-badge">Intermediate Level</span>
                 </div>
               </li>
 
-              <li>
+              <li id="b2-first">
                 <div class="category-card" style="--color: 229, 75%, 58%">
                   <div class="card-icon">
-                    <img
-                      src="./assets/images/category-3.svg"
-                      width="40"
-                      height="40"
-                      loading="lazy"
-                      alt="Off-Campus Programs"
-                      class="img"
-                    />
+                    <img src="./assets/images/advanced.png" width="50" height="50" loading="lazy" alt="B2 First icon" class="img" />
                   </div>
 
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Off-Campus Programs</a>
-                  </h3>
+                  <h3 class="h3 card-title">B2 First (FCE) Preparation</h3>
 
                   <p class="card-text">
-                    Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                    Our B2 First course is designed to take your English to an advanced level. We concentrate on:
                   </p>
+                  <ul>
+                    <li>Complex grammar and sophisticated vocabulary</li>
+                    <li>Advanced reading and writing strategies</li>
+                    <li>Listening comprehension for various accents</li>
+                    <li>Fluent and natural speaking skills</li>
+                  </ul>
+                  <p>This course prepares you for academic study or professional use of English.</p>
 
-                  <span class="card-badge">8 Courses</span>
+                  <span class="card-badge">Upper-Intermediate Level</span>
                 </div>
               </li>
 
-              <li>
+              <li id="c1-advanced">
                 <div class="category-card" style="--color: 42, 94%, 55%">
                   <div class="card-icon">
-                    <img
-                      src="./assets/images/category-4.svg"
-                      width="40"
-                      height="40"
-                      loading="lazy"
-                      alt="Hybrid Distance Programs"
-                      class="img"
-                    />
+                    <img src="./assets/images/advanced-2.png" width="50" height="50" loading="lazy" alt="C1 Advanced icon" class="img" />
                   </div>
 
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Hybrid Distance Programs</a>
-                  </h3>
+                  <h3 class="h3 card-title">C1 Advanced (CAE) Preparation</h3>
 
                   <p class="card-text">
-                    Lorem ipsum dolor consec tur elit adicing sed umod tempor.
+                    Our C1 Advanced course is for those aiming for high-level English proficiency. We focus on:
                   </p>
+                  <ul>
+                    <li>Nuanced and idiomatic language use</li>
+                    <li>Critical reading and analytical writing</li>
+                    <li>Advanced listening and note-taking skills</li>
+                    <li>Confident speaking on complex topics</li>
+                  </ul>
+                  <p>This course equips you with the skills to use English at a professional or academic level.</p>
 
-                  <span class="card-badge">8 Courses</span>
+                  <span class="card-badge">Advanced Level</span>
+                </div>
+              </li>
+
+              <li id="c2-proficiency">
+                <div class="category-card" style="--color: 265, 83%, 45%">
+                  <div class="card-icon">
+                    <img src="./assets/images/proficiency.png" width="50" height="50" loading="lazy" alt="C2 Proficiency icon" class="img" />
+                  </div>
+
+                  <h3 class="h3 card-title">C2 Proficiency (CPE) Preparation</h3>
+
+                  <p class="card-text">
+                    Our C2 Proficiency course is for those seeking to master the English language. We emphasize:
+                  </p>
+                  <ul>
+                    <li>Sophisticated and nuanced language use</li>
+                    <li>Advanced literary and academic texts</li>
+                    <li>High-level listening and speaking skills</li>
+                    <li>Mastery of subtle language expressions</li>
+                  </ul>
+                  <p>This course helps you achieve near-native proficiency in English.</p>
+
+                  <span class="card-badge">Proficiency Level</span>
+                </div>
+              </li>
+
+              <li id="conversational-english">
+                <div class="category-card" style="--color: 330, 75%, 60%">
+                  <div class="card-icon">
+                    <img src="./assets/images/conversation.png" width="50" height="50" loading="lazy" alt="Conversational English icon" class="img" />
+                  </div>
+
+                  <h3 class="h3 card-title">Conversational English</h3>
+
+                  <p class="card-text">
+                    Our Conversational English course is perfect for those who want to improve their speaking skills without exam pressure. We focus on:
+                  </p>
+                  <ul>
+                    <li>Practical, everyday conversation topics</li>
+                    <li>Pronunciation and natural speech patterns</li>
+                    <li>Idiomatic expressions and colloquialisms</li>
+                    <li>Cultural aspects of English-speaking countries</li>
+                  </ul>
+                  <p>This course helps you gain confidence in real-world communication scenarios.</p>
+
+                  <span class="card-badge">All Levels Welcome</span>
                 </div>
               </li>
             </ul>
-          </div>
-        </section>
 
-        <!-- 
-        - #ABOUT
-      -->
-
-        <section class="section about" id="about" aria-label="about">
-          <div class="container">
-            <figure class="about-banner">
-              <div class="img-holder" style="--width: 520; --height: 370">
-                <img
-                  src="./assets/images/about-banner.jpg"
-                  width="520"
-                  height="370"
-                  loading="lazy"
-                  alt="about banner"
-                  class="img-cover"
-                />
-              </div>
-
-              <img
-                src="./assets/images/about-shape-1.svg"
-                width="360"
-                height="420"
-                loading="lazy"
-                alt=""
-                class="shape about-shape-1"
-              />
-
-              <img
-                src="./assets/images/about-shape-2.svg"
-                width="371"
-                height="220"
-                loading="lazy"
-                alt=""
-                class="shape about-shape-2"
-              />
-
-              <img
-                src="./assets/images/about-shape-3.png"
-                width="722"
-                height="528"
-                loading="lazy"
-                alt=""
-                class="shape about-shape-3"
-              />
-            </figure>
-
-            <div class="about-content">
-              <p class="section-subtitle">About Us</p>
-
-              <h2 class="h2 section-title">
-                Over 10 Years in <span class="span">Distant learning</span> for
-                Skill Development
-              </h2>
-
-              <p class="section-text">
-                Lorem ipsum dolor sit amet consectur adipiscing elit sed eiusmod
-                ex tempor incididunt labore dolore magna aliquaenim ad minim.
-              </p>
-
-              <ul class="about-list">
-                <li class="about-item">
-                  <ion-icon
-                    name="checkmark-done-outline"
-                    aria-hidden="true"
-                  ></ion-icon>
-
-                  <span class="span">Expert Trainers</span>
-                </li>
-
-                <li class="about-item">
-                  <ion-icon
-                    name="checkmark-done-outline"
-                    aria-hidden="true"
-                  ></ion-icon>
-
-                  <span class="span">Online Remote Learning</span>
-                </li>
-
-                <li class="about-item">
-                  <ion-icon
-                    name="checkmark-done-outline"
-                    aria-hidden="true"
-                  ></ion-icon>
-
-                  <span class="span">Lifetime Access</span>
-                </li>
-              </ul>
-
-              <img
-                src="./assets/images/about-shape-4.svg"
-                width="100"
-                height="100"
-                loading="lazy"
-                alt=""
-                class="shape about-shape-4"
-              />
+            <div class="cta-container">
+              <h3 class="cta-title">Ready to enhance your English skills?</h3>
+              <p class="cta-text">Our experienced instructors are here to guide you through every step of your language learning journey. Whether you're preparing for an exam or improving your conversational skills, we have the perfect course for you.</p>
+              <a href="#contact" class="btn has-before">
+                <span class="span">Contact Us Today</span>
+                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+              </a>
             </div>
           </div>
         </section>
 
-        <!-- 
-        - #COURSE
-      -->
 
-        <section class="section course" id="courses" aria-label="course">
-          <div class="container">
-            <p class="section-subtitle">Popular Courses</p>
 
-            <h2 class="h2 section-title">Pick A Course To Get Started</h2>
 
-            <ul class="grid-list">
-              <li>
-                <div class="course-card">
-                  <figure
-                    class="card-banner img-holder"
-                    style="--width: 370; --height: 220"
-                  >
-                    <img
-                      src="./assets/images/course-1.jpg"
-                      width="370"
-                      height="220"
-                      loading="lazy"
-                      alt="Build Responsive Real- World Websites with HTML and CSS"
-                      class="img-cover"
-                    />
-                  </figure>
-
-                  <div class="abs-badge">
-                    <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                    <span class="span">3 Weeks</span>
-                  </div>
-
-                  <div class="card-content">
-                    <span class="badge">Beginner</span>
-
-                    <h3 class="h3">
-                      <a href="#" class="card-title"
-                        >Build Responsive Real- World Websites with HTML and
-                        CSS</a
-                      >
-                    </h3>
-
-                    <div class="wrapper">
-                      <div class="rating-wrapper">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                      </div>
-
-                      <p class="rating-text">(5.0/7 Rating)</p>
-                    </div>
-
-                    <data class="price" value="29">$29.00</data>
-
-                    <ul class="card-meta-list">
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="library-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">8 Lessons</span>
-                      </li>
-
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="people-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">20 Students</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div class="course-card">
-                  <figure
-                    class="card-banner img-holder"
-                    style="--width: 370; --height: 220"
-                  >
-                    <img
-                      src="./assets/images/course-2.jpg"
-                      width="370"
-                      height="220"
-                      loading="lazy"
-                      alt="Java Programming Masterclass for Software Developers"
-                      class="img-cover"
-                    />
-                  </figure>
-
-                  <div class="abs-badge">
-                    <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                    <span class="span">8 Weeks</span>
-                  </div>
-
-                  <div class="card-content">
-                    <span class="badge">Advanced</span>
-
-                    <h3 class="h3">
-                      <a href="#" class="card-title"
-                        >Java Programming Masterclass for Software Developers</a
-                      >
-                    </h3>
-
-                    <div class="wrapper">
-                      <div class="rating-wrapper">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                      </div>
-
-                      <p class="rating-text">(4.5 /9 Rating)</p>
-                    </div>
-
-                    <data class="price" value="49">$49.00</data>
-
-                    <ul class="card-meta-list">
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="library-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">15 Lessons</span>
-                      </li>
-
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="people-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">35 Students</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div class="course-card">
-                  <figure
-                    class="card-banner img-holder"
-                    style="--width: 370; --height: 220"
-                  >
-                    <img
-                      src="./assets/images/course-3.jpg"
-                      width="370"
-                      height="220"
-                      loading="lazy"
-                      alt="The Complete Camtasia Course for Content Creators"
-                      class="img-cover"
-                    />
-                  </figure>
-
-                  <div class="abs-badge">
-                    <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                    <span class="span">3 Weeks</span>
-                  </div>
-
-                  <div class="card-content">
-                    <span class="badge">Intermediate</span>
-
-                    <h3 class="h3">
-                      <a href="#" class="card-title"
-                        >The Complete Camtasia Course for Content Creators</a
-                      >
-                    </h3>
-
-                    <div class="wrapper">
-                      <div class="rating-wrapper">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                      </div>
-
-                      <p class="rating-text">(4.9 /7 Rating)</p>
-                    </div>
-
-                    <data class="price" value="35">$35.00</data>
-
-                    <ul class="card-meta-list">
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="library-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">13 Lessons</span>
-                      </li>
-
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="people-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">18 Students</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-            </ul>
-
-            <a href="#" class="btn has-before">
-              <span class="span">Browse more courses</span>
-
-              <ion-icon
-                name="arrow-forward-outline"
-                aria-hidden="true"
-              ></ion-icon>
-            </a>
-          </div>
-        </section>
-
-        <!-- 
-        - #VIDEO
-      -->
-
-        <section
-          class="video has-bg-image"
-          aria-label="video"
-          style="background-image: url('./assets/images/video-bg.png')"
-        >
-          <div class="container">
-            <div class="video-card">
-              <div
-                class="video-banner img-holder has-after"
-                style="--width: ; --height: "
-              >
-                <img
-                  src="./assets/images/video-banner.jpg"
-                  width="970"
-                  height="550"
-                  loading="lazy"
-                  alt="video banner"
-                  class="img-cover"
-                />
-
-                <button class="play-btn" aria-label="play video">
-                  <ion-icon name="play" aria-hidden="true"></ion-icon>
-                </button>
-              </div>
-
-              <img
-                src="./assets/images/video-shape-1.png"
-                width="1089"
-                height="605"
-                loading="lazy"
-                alt=""
-                class="shape video-shape-1"
-              />
-
-              <img
-                src="./assets/images/video-shape-2.png"
-                width="158"
-                height="174"
-                loading="lazy"
-                alt=""
-                class="shape video-shape-2"
-              />
-            </div>
-          </div>
-        </section>
-
-        <!-- 
-        - #STATE
-      -->
-
-        <section class="section stats" aria-label="stats">
-          <div class="container">
-            <ul class="grid-list">
-              <li>
-                <div class="stats-card" style="--color: 170, 75%, 41%">
-                  <h3 class="card-title">29.3k</h3>
-
-                  <p class="card-text">Student Enrolled</p>
-                </div>
-              </li>
-
-
-              <li>
-                <div class="stats-card" style="--color: 260, 100%, 67%">
-                  <h3 class="card-title">100%</h3>
-
-                  <p class="card-text">Satisfaction Rate</p>
-                </div>
-              </li>
-
-              <li>
-                <div class="stats-card" style="--color: 42, 94%, 55%">
-                  <h3 class="card-title">354+</h3>
-
-                  <p class="card-text">Top Instructors</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- 
-        - #BLOG
-      -->
-
-        <section
-          class="section blog has-bg-image"
-          id="blog"
-          aria-label="blog"
-          style="background-image: url('./assets/images/blog-bg.svg')"
-        >
-          <div class="container">
-            <p class="section-subtitle">Latest Articles</p>
-
-            <h2 class="h2 section-title">Get News With Eduweb</h2>
-
-            <ul class="grid-list">
-              <li>
-                <div class="blog-card">
-                  <figure
-                    class="card-banner img-holder has-after"
-                    style="--width: 370; --height: 370"
-                  >
-                    <img
-                      src="./assets/images/blog-1.jpg"
-                      width="370"
-                      height="370"
-                      loading="lazy"
-                      alt="Become A Better Blogger: Content Planning"
-                      class="img-cover"
-                    />
-                  </figure>
-
-                  <div class="card-content">
-                    <a href="#" class="card-btn" aria-label="read more">
-                      <ion-icon
-                        name="arrow-forward-outline"
-                        aria-hidden="true"
-                      ></ion-icon>
-                    </a>
-
-                    <a href="#" class="card-subtitle">Online</a>
-
-                    <h3 class="h3">
-                      <a href="#" class="card-title"
-                        >Become A Better Blogger: Content Planning</a
-                      >
-                    </h3>
-
-                    <ul class="card-meta-list">
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="calendar-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">Oct 10, 2021</span>
-                      </li>
-
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="chatbubbles-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">Com 09</span>
-                      </li>
-                    </ul>
-
-                    <p class="card-text">
-                      Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
-                    </p>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div class="blog-card">
-                  <figure
-                    class="card-banner img-holder has-after"
-                    style="--width: 370; --height: 370"
-                  >
-                    <img
-                      src="./assets/images/blog-2.jpg"
-                      width="370"
-                      height="370"
-                      loading="lazy"
-                      alt="Become A Better Blogger: Content Planning"
-                      class="img-cover"
-                    />
-                  </figure>
-
-                  <div class="card-content">
-                    <a href="#" class="card-btn" aria-label="read more">
-                      <ion-icon
-                        name="arrow-forward-outline"
-                        aria-hidden="true"
-                      ></ion-icon>
-                    </a>
-
-                    <a href="#" class="card-subtitle">Online</a>
-
-                    <h3 class="h3">
-                      <a href="#" class="card-title"
-                        >Become A Better Blogger: Content Planning</a
-                      >
-                    </h3>
-
-                    <ul class="card-meta-list">
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="calendar-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">Oct 10, 2021</span>
-                      </li>
-
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="chatbubbles-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">Com 09</span>
-                      </li>
-                    </ul>
-
-                    <p class="card-text">
-                      Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
-                    </p>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div class="blog-card">
-                  <figure
-                    class="card-banner img-holder has-after"
-                    style="--width: 370; --height: 370"
-                  >
-                    <img
-                      src="./assets/images/blog-3.jpg"
-                      width="370"
-                      height="370"
-                      loading="lazy"
-                      alt="Become A Better Blogger: Content Planning"
-                      class="img-cover"
-                    />
-                  </figure>
-
-                  <div class="card-content">
-                    <a href="#" class="card-btn" aria-label="read more">
-                      <ion-icon
-                        name="arrow-forward-outline"
-                        aria-hidden="true"
-                      ></ion-icon>
-                    </a>
-
-                    <a href="#" class="card-subtitle">Online</a>
-
-                    <h3 class="h3">
-                      <a href="#" class="card-title"
-                        >Become A Better Blogger: Content Planning</a
-                      >
-                    </h3>
-
-                    <ul class="card-meta-list">
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="calendar-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">Oct 10, 2021</span>
-                      </li>
-
-                      <li class="card-meta-item">
-                        <ion-icon
-                          name="chatbubbles-outline"
-                          aria-hidden="true"
-                        ></ion-icon>
-
-                        <span class="span">Com 09</span>
-                      </li>
-                    </ul>
-
-                    <p class="card-text">
-                      Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-
-            <img
-              src="./assets/images/blog-shape.png"
-              width="186"
-              height="186"
-              loading="lazy"
-              alt=""
-              class="shape blog-shape"
-            />
-          </div>
-        </section>
-      </article>
     </main>
 
     <!-- 
     - #FOOTER
   -->
 
-    <footer
-      class="footer"
-      style="background-image: url('./assets/images/footer-bg.png')"
-    >
-      <div class="footer-top section">
-        <div class="container grid-list">
-          <div class="footer-brand">
-            <a href="#" class="logo">
-              <img
-                src="./assets/images/logo-light.svg"
-                width="162"
-                height="50"
-                alt="EduWeb logo"
-              />
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-text">
+        <h2 class="followus-text">Follow us:</h2>
+      </div>
+      <div class="footer-list">
+        <ul class="social-list">
+          <li class="social-media-button">
+            <a
+              href="https://www.instagram.com/your-instagram-handle"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets/icons/instagram.svg" alt="Instagram" />
             </a>
-
-            <p class="footer-brand-text">
-              Lorem ipsum dolor amet consecto adi pisicing elit sed eiusm tempor
-              incidid unt labore dolore.
-            </p>
-
-            <div class="wrapper">
-              <span class="span">Add:</span>
-
-              <address class="address">70-80 Upper St Norwich NR2</address>
-            </div>
-
-            <div class="wrapper">
-              <span class="span">Call:</span>
-
-              <a href="tel:+011234567890" class="footer-link"
-                >+01 123 4567 890</a
-              >
-            </div>
-
-            <div class="wrapper">
-              <span class="span">Email:</span>
-
-              <a href="mailto:info@eduweb.com" class="footer-link"
-                >info@eduweb.com</a
-              >
-            </div>
-          </div>
-
-          <ul class="footer-list">
-            <li>
-              <p class="footer-list-title">Online Platform</p>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">About</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Courses</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Instructor</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Events</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Instructor Profile</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Purchase Guide</a>
-            </li>
-          </ul>
-
-          <ul class="footer-list">
-            <li>
-              <p class="footer-list-title">Links</p>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Contact Us</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Gallery</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">News & Articles</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">FAQ's</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Sign In/Registration</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Coming Soon</a>
-            </li>
-          </ul>
-
-          <div class="footer-list">
-            <p class="footer-list-title">Contacts</p>
-
-            <p class="footer-list-text">
-              Enter your email address to register to our newsletter
-              subscription
-            </p>
-
-            <form action="" class="newsletter-form">
-              <input
-                type="email"
-                name="email_address"
-                placeholder="Your email"
-                required
-                class="input-field"
-              />
-
-              <button type="submit" class="btn has-before">
-                <span class="span">Subscribe</span>
-
-                <ion-icon
-                  name="arrow-forward-outline"
-                  aria-hidden="true"
-                ></ion-icon>
-              </button>
-            </form>
-
-            <ul class="social-list">
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-linkedin"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-youtube"></ion-icon>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+          </li>
+          <li class="social-media-button">
+            <a
+              href="https://twitter.com/your-twitter-handle"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets/icons/twitter.svg" alt="Twitter" />
+            </a>
+          </li>
+          <li class="social-media-button">
+            <a
+              href="https://www.youtube.com/your-youtube-channel"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets/icons/youtube.svg" alt="YouTube" />
+            </a>
+          </li>
+          <li class="social-media-button">
+            <a
+              href="https://www.linkedin.com/company/your-company-name"
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
+            </a>
+          </li>
+        </ul>
       </div>
-
-      <div class="footer-bottom">
-        <div class="container">
-          <p class="copyright">
-            Copyright 2022 All Rights Reserved by
-            <a href="#" class="copyright-link">codewithsadee</a>
-          </p>
-        </div>
-      </div>
-    </footer>
+    </div>
+  </footer>
 
     <!-- 
     - #BACK TO TOP
