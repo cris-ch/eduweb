@@ -2776,13 +2776,37 @@ main {
 .testimonials {
   background-color: var(--isabelline);
   padding-block: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials::before,
+.testimonials::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: var(--kappel);
+  opacity: 0.1;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.testimonials::before {
+  top: -100px;
+  left: -100px;
+}
+
+.testimonials::after {
+  bottom: -100px;
+  right: -100px;
 }
 
 .testimonial-carousel {
   position: relative;
   max-width: 90%;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 60px; /* Increased padding for button space */
   overflow: hidden;
 }
 
@@ -2797,11 +2821,60 @@ main {
 
 .testimonial-card {
   flex: 0 0 100%;
-  padding: 30px 50px;
+  padding: 40px;
   background-color: var(--white);
   border-radius: var(--radius-10);
-  box-shadow: var(--shadow-2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0; /* Start with opacity 0 for fade-in effect */
+  transform: translateY(20px); /* Start slightly below for fade-in effect */
+  animation: fadeInUp 0.5s ease forwards 0.2s; /* Added delay for a staggered effect */
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-text {
+  font-size: var(--fs-4);
+  color: var(--eerie-black-1);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  position: relative;
+  font-style: italic;
+}
+
+.testimonial-text::before,
+.testimonial-text::after {
+  content: '"';
+  font-size: 4rem;
+  color: var(--kappel);
+  position: absolute;
+  opacity: 0.3;
+}
+
+.testimonial-text::before {
+  top: -20px;
+  left: -10px;
+}
+
+.testimonial-text::after {
+  bottom: -40px;
+  right: -10px;
+}
+
+.testimonial-name {
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  color: var(--radical-red);
+  margin-bottom: 5px;
+}
+
+.testimonial-position {
+  font-size: var(--fs-6);
+  color: var(--gray-web);
 }
 
 .carousel-button {
@@ -2811,17 +2884,21 @@ main {
   background-color: var(--kappel);
   color: var(--white);
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 50px; /* Increased size */
+  height: 50px; /* Increased size */
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 24px; /* Increased font size */
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .carousel-button:hover {
   background-color: var(--radical-red);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-button.prev {
@@ -2832,17 +2909,40 @@ main {
   right: 0;
 }
 
+/* Testimonial card entrance animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Ensure buttons are visible on mobile */
 @media (max-width: 768px) {
   .carousel-button {
-    display: block;
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
+    width: 40px; /* Adjusted for mobile */
+    height: 40px; /* Adjusted for mobile */
+    font-size: 20px; /* Adjusted for mobile */
   }
   
   .testimonial-carousel {
-    padding: 0 35px;
+    padding: 0 50px; /* Adjusted padding for mobile */
+  }
+
+  .testimonial-text {
+    font-size: var(--fs-5);
+  }
+
+  .testimonial-name {
+    font-size: var(--fs-6);
+  }
+
+  .testimonial-position {
+    font-size: var(--fs-7);
   }
 }
 
@@ -2979,3 +3079,4 @@ main {
 .back-top-btn:hover {
   background-color: var(--radical-red);
 }
+

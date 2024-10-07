@@ -164,3 +164,60 @@ window.addEventListener('scroll', function() {
   }
 });
 
+// Testimonial Carousel
+const track = document.querySelector(".carousel-track");
+const slides = Array.from(track.children);
+const nextButton = document.querySelector(".carousel-button.next");
+const prevButton = document.querySelector(".carousel-button.prev");
+
+let currentIndex = 0;
+
+const moveToSlide = (index) => {
+  if (index < 0) index = slides.length - 1;
+  if (index >= slides.length) index = 0;
+
+  track.style.transform = `translateX(-${index * 100}%)`;
+  slides.forEach((slide, i) => {
+    if (i === index) {
+      slide.classList.add("current-slide");
+      // Reset the animation
+      slide.style.animation = 'none';
+      slide.offsetHeight; // Trigger reflow
+      slide.style.animation = null;
+    } else {
+      slide.classList.remove("current-slide");
+    }
+  });
+  currentIndex = index;
+};
+
+// Next button
+nextButton.addEventListener("click", () => {
+  moveToSlide(currentIndex + 1);
+});
+
+// Prev button
+prevButton.addEventListener("click", () => {
+  moveToSlide(currentIndex - 1);
+});
+
+// Auto-play
+let autoPlay = setInterval(() => {
+  moveToSlide(currentIndex + 1);
+}, 5000); // Change slide every 5 seconds
+
+// Pause auto-play on hover
+track.addEventListener("mouseenter", () => {
+  clearInterval(autoPlay);
+});
+
+// Resume auto-play when mouse leaves
+track.addEventListener("mouseleave", () => {
+  autoPlay = setInterval(() => {
+    moveToSlide(currentIndex + 1);
+  }, 5000);
+});
+
+// Initialize
+moveToSlide(0);
+
