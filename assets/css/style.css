@@ -243,7 +243,7 @@ body {
 
 .section-title {
   --color: var(--radical-red);
-  text-align: center;
+  text-align: left; /* Changed from center to left */
 }
 
 .section-title .span {
@@ -340,15 +340,14 @@ body {
 }
 
 .header {
-  position: fixed;
+  position: fixed; /* Change from absolute to fixed */
   top: 0;
   left: 0;
   width: 100%;
   background-color: var(--white);
   padding-block: 12px;
   box-shadow: var(--shadow-1);
-  z-index: 1000;
-  transition: background-color 0.3s ease;
+  z-index: 4;
 }
 
 .header.active {
@@ -410,8 +409,10 @@ body {
     width: 100%;
     max-width: 320px;
     height: 100%;
-    z-index: 2;
+    z-index: 5; /* Increase z-index to be above the header */
     transition: 0.25s var(--cubic-in);
+    overflow-y: auto; /* Add scrolling for long menus */
+    padding-top: 80px; /* Add top padding to avoid overlap with the header */
   }
 
   .navbar.active {
@@ -431,6 +432,13 @@ body {
 
   .header-action-btn {
     display: block; /* Show menu toggle button on smaller screens */
+    font-size: 24px;
+    color: var(--eerie-black-1);
+    transition: var(--transition-1);
+  }
+
+  .header-action-btn:hover {
+    color: var(--kappel);
   }
 }
 
@@ -546,11 +554,8 @@ body {
 \*-----------------------------------*/
 
 .hero {
-  position: relative;
-  padding-top: 120px; /* Increase this value to push content below the header */
-  padding-bottom: 100px;
-  text-align: center;
-  overflow: hidden;
+  padding-block-start: calc(var(--section-padding) + 80px);
+  padding-top: 120px; /* Add this line to create space for the fixed header */
 }
 
 .hero .container {
@@ -652,6 +657,12 @@ body {
 }
 .flip > span:nth-child(2) {
   background-color: #42c58a;
+}
+.flip > span:nth-child(3) {
+  background-color: var(--radical-red);
+}
+.flip > span:nth-child(4) {
+  background-color: #f4a460;
 }
 .flip > span:nth-child(5) {
   background-color: var(--selective-yellow);
@@ -768,7 +779,7 @@ body {
 .category .container {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 10px;
 }
 
 .grid-list {
@@ -782,59 +793,61 @@ body {
   border-radius: var(--radius-5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .category-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
   margin-block: 20px 15px;
+  min-height: 60px;
 }
 
 .card-text {
   margin-bottom: 20px;
+  flex-grow: 1;
 }
 
-.card-badge {
-  background-color: var(--kappel_15);
-  color: var(--kappel);
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 4px 12px;
-  border-radius: 50px;
-}
-
-.cta-container {
-  background-color: var(--kappel);
+.card-link {
+  display: inline-block;
+  padding: 8px 15px; /* Reduced padding */
+  background-color: hsl(var(--color));
   color: var(--white);
-  padding: 50px;
-  border-radius: 10px;
+  text-decoration: none;
+  border-radius: var(--radius-5);
+  transition: background-color 0.3s ease, transform 0.3s ease;
   text-align: center;
-  margin-top: 50px;
+  font-weight: var(--fw-600);
+  font-size: var(--fs-6); /* Smaller font size */
+  margin-top: auto;
+  align-self: flex-end; /* Align to the right */
+  margin-left: auto; /* Push to the right */
 }
 
-.cta-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.card-link:hover {
+  background-color: hsl(var(--color), 80%, 30%);
+  transform: scale(1.05);
 }
 
-.cta-text {
-  margin-bottom: 30px;
+/* Ensure text is readable on light backgrounds */
+.category-card[style*="170, 75%, 41%"] .card-link,
+.category-card[style*="42, 94%, 55%"] .card-link {
+  color: var(--eerie-black-1);
 }
 
-.cta-container .btn {
-  background-color: var(--white);
-  color: var(--kappel);
-  margin-inline: auto;
-}
-
-.cta-container .btn:hover {
-  background-color: var(--eerie-black-1);
+/* Adjust hover state for light buttons */
+.category-card[style*="170, 75%, 41%"] .card-link:hover,
+.category-card[style*="42, 94%, 55%"] .card-link:hover {
+  background-color: hsl(var(--color), 80%, 20%);
   color: var(--white);
 }
 
+/* Adjust grid layout for better responsiveness */
 @media (min-width: 768px) {
   .grid-list {
     grid-template-columns: repeat(2, 1fr);
@@ -847,9 +860,14 @@ body {
   }
 }
 
-@media (min-width: 1200px) {
-  .category .container {
-    max-width: 1200px;
+/* Ensure consistent card height on smaller screens */
+@media (max-width: 767px) {
+  .category-card {
+    height: auto;
+  }
+
+  .card-title {
+    min-height: auto;
   }
 }
 
@@ -1183,7 +1201,39 @@ body {
   text-transform: uppercase;
 }
 
+/* Add these new styles for the stats section */
+.stats .grid-list {
+  display: grid;
+  gap: 30px;
+}
 
+/* Responsive adjustments for the stats section */
+@media (min-width: 768px) {
+  .stats .grid-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .stats .grid-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Adjust the container max-width for larger screens */
+@media (min-width: 1200px) {
+  .stats .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* Optional: Adjust card padding for better fit on one line */
+@media (min-width: 992px) {
+  .stats-card {
+    padding: 20px 15px;
+  }
+}
 
 /*-----------------------------------*\
   #MAP
@@ -1296,6 +1346,10 @@ body {
   color: var(--white);
 }
 
+.footer-link {
+  transition: var(--transition-1);
+}
+
 .footer-link:is(:hover, :focus) {
   color: var(--kappel);
 }
@@ -1321,34 +1375,21 @@ body {
   font-size: 30px;
 }
 
-/*-----------------------------------*\
-  #BACK TO TOP
-\*-----------------------------------*/
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer .container {
+    flex-direction: column;
+    align-items: center;
+  }
 
-.back-top-btn {
-  position: fixed;
-  bottom: 40px;
-  right: 30px;
-  background-color: var(--radical-red);
-  color: var(--white);
-  font-size: 20px;
-  padding: 15px;
-  border-radius: var(--radius-circle);
-  z-index: 3;
-  opacity: 0;
-  pointer-events: none;
-  transition: var(--transition-1);
+  .footer-text, .footer-list {
+    text-align: center;
+  }
+
+  .social-list {
+    justify-content: center;
+  }
 }
-
-.back-top-btn.active {
-  transform: translateY(10px);
-  opacity: 1;
-  pointer-events: all;
-}
-
-/*-----------------------------------*\
-  #MEDIA QUERIES
-\*-----------------------------------*/
 
 /**
  * responsive for large than 575px screen
@@ -1889,11 +1930,9 @@ body {
 /* Update contact form styles */
 .contact-form {
   background-color: var(--white);
-  padding: 40px;
+  padding: 20px; /* Reduced padding */
   border-radius: var(--radius-10);
   box-shadow: var(--shadow-2);
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 .contact-form .section-title {
@@ -1909,12 +1948,13 @@ body {
 
 .input-wrapper {
   position: relative;
+  margin-bottom: 15px; /* Slightly reduced margin */
 }
 
 .contact-form .input-field,
 .contact-form .textarea-field {
   width: 100%;
-  padding: 15px;
+  padding: 12px 35px 12px 15px; /* Adjusted padding */
   border: 1px solid var(--light-gray);
   border-radius: var(--radius-5);
   font-size: var(--fs-5);
@@ -1969,30 +2009,36 @@ body {
 
 .wrap {
   perspective-origin: 50% 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .svg {
   stroke: var(--youtube);
   position: absolute;
-  bottom: -450vh;
-  transform-style: preserve-3d;
-  opacity: 0.1; /* Reduce opacity to make icons less prominent */
+  opacity: 0.2; /* Increased from 0.1 */
 }
 
 .svg:nth-child(1) {
   left: -18%;
   animation: raise1 21s linear infinite;
   animation-delay: -2s;
-  transform: scale(-0.3) rotate(313deg);
-  z-index: -6;
-  filter: blur(1px);
+  transform: scale(-0.5) rotate(313deg); /* Increased scale */
 }
+
 @keyframes raise1 {
   to {
-    bottom: 1500vh;
-    transform: scale(-0.3) rotate(313deg);
+    bottom: 150vh;
+    transform: scale(-0.5) rotate(313deg);
   }
 }
+
+/* Add more SVG animations as needed */
 
 .svg:nth-child(2) {
   left: 102%;
@@ -2251,6 +2297,8 @@ main {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+
+
 @media (max-width: 767px) {
   :root {
     --fs-1: 3.5rem;
@@ -2442,198 +2490,68 @@ main {
   z-index: 1;
 }
 
-.course-title {
-  font-size: var(--fs-2);
-  color: var(--kappel);
+.course-details .section-title {
   margin-bottom: 30px;
-  text-align: center;
-  animation: fadeInUp 0.8s ease-out;
+  text-align: left; /* Changed from center to left */
 }
 
-.course-intro {
-  font-size: var(--fs-4);
-  color: var(--eerie-black-1);
-  margin-bottom: 40px;
-  text-align: center;
-  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+.course-details .section-text {
+  font-size: var(--fs-5);
+  color: var(--gray-web);
+  margin-bottom: 30px;
 }
 
-.course-content h2,
-.course-benefits h2,
-.course-structure h2 {
-  font-size: var(--fs-3);
-  color: var(--radical-red);
-  margin-bottom: 20px;
-  animation: fadeInUp 0.8s ease-out 0.4s backwards;
-}
-
-.course-content ul,
-.course-benefits ul {
+.course-list {
   list-style-type: none;
   padding-left: 0;
   margin-bottom: 30px;
 }
 
-.course-content li,
-.course-benefits li {
+.course-list li {
   font-size: var(--fs-5);
   color: var(--gray-web);
   margin-bottom: 10px;
   padding-left: 25px;
   position: relative;
-  animation: fadeInLeft 0.8s ease-out 0.6s backwards;
 }
 
-.course-content li::before,
-.course-benefits li::before {
+.course-list li::before {
   content: '✓';
   position: absolute;
   left: 0;
   color: var(--kappel);
 }
 
-.course-structure p {
-  font-size: var(--fs-5);
-  color: var(--gray-web);
-  margin-bottom: 30px;
-  animation: fadeInUp 0.8s ease-out 0.8s backwards;
-}
-
 .cta-container {
   background-color: var(--kappel);
   color: var(--white);
-  padding: 40px;
+  padding: 30px; /* Reduced padding */
   border-radius: var(--radius-10);
   text-align: center;
   margin-top: 60px;
-  margin-bottom: 60px;
-  animation: fadeInUp 0.8s ease-out 1s backwards;
+  margin-bottom: 60px; /* Added margin-bottom */
 }
 
-.cta-container h3 {
-  font-size: var(--fs-3);
-  margin-bottom: 20px;
+.cta-container .h3 {
+  color: var(--white);
+  margin-bottom: 15px; /* Reduced margin */
 }
 
-.cta-container p {
-  font-size: var(--fs-5);
-  margin-bottom: 30px;
+.cta-container .section-text {
+  color: var(--white); /* Changed text color to white for better readability */
+  margin-bottom: 20px; /* Added margin-bottom */
 }
 
 .cta-container .btn {
   background-color: var(--white);
   color: var(--kappel);
+  margin: 0 auto; /* Center the button */
+  display: inline-block; /* Allow margin auto to work */
 }
 
 .cta-container .btn:hover {
   background-color: var(--eerie-black-1);
   color: var(--white);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .course-title {
-    font-size: var(--fs-2);
-  }
-
-  .course-intro {
-    font-size: var(--fs-5);
-  }
-
-  .course-content h2,
-  .course-benefits h2,
-  .course-structure h2 {
-    font-size: var(--fs-3);
-  }
-
-  .cta-container {
-    padding: 30px;
-  }
-
-  .cta-container h3 {
-    font-size: var(--fs-4);
-  }
-}
-
-/* Add floating shapes for vibrancy */
-.floating-shape {
-  position: absolute;
-  opacity: 0.1;
-  z-index: 0;
-}
-
-.shape-1 {
-  top: 10%;
-  left: 5%;
-  width: 100px;
-  height: 100px;
-  background-color: var(--selective-yellow);
-  border-radius: 50%;
-  animation: float 8s ease-in-out infinite;
-}
-
-.shape-2 {
-  top: 60%;
-  right: 5%;
-  width: 150px;
-  height: 150px;
-  background-color: var(--radical-red);
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  animation: float 10s ease-in-out infinite;
-}
-
-.shape-3 {
-  bottom: 10%;
-  left: 10%;
-  width: 80px;
-  height: 80px;
-  background-color: var(--kappel);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  animation: float 12s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(10deg); }
-}
-
-/* Add a subtle background pattern */
-.course-details::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 25px 25px, var(--light-gray) 2%, transparent 0%),
-    radial-gradient(circle at 75px 75px, var(--light-gray) 2%, transparent 0%);
-  background-size: 100px 100px;
-  opacity: 0.1;
-  z-index: 0;
-}
-
-/* Add these new animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 /* Moving SVG styles */
@@ -2684,6 +2602,32 @@ main {
   75% { transform: translate(10px, 10px) rotate(5deg); }
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .course-details .container {
+    padding: 0 20px;
+  }
+  
+  .cta-container {
+    padding: 30px;
+  }
+}
+
+.svg-3 {
+  bottom: 10%;
+  left: 10%;
+  width: 60px;
+  height: 60px;
+  fill: var(--kappel);
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(10px, -10px) rotate(5deg); }
+  50% { transform: translate(20px, 0) rotate(10deg); }
+  75% { transform: translate(10px, 10px) rotate(5deg); }
+}
+
 /* Add these media queries for better responsiveness */
 @media (max-width: 1200px) {
   .course-details .container {
@@ -2705,4 +2649,351 @@ main {
     position: relative; /* Ensure footer is in the normal flow */
     bottom: auto; /* Remove any absolute positioning */
   }
+}
+
+/* Ensure the main content doesn't overlap with the fixed header */
+main {
+  padding-top: 80px; /* Adjust this value based on your header height */
+}
+
+/* Add these styles to your existing CSS file */
+
+.map {
+  background-color: var(--cultured);
+  position: relative;
+  overflow: hidden;
+}
+
+.map .container {
+  position: relative;
+  z-index: 1;
+}
+
+.map .section-subtitle {
+  color: var(--radical-red);
+}
+
+.map .section-title {
+  margin-bottom: 20px;
+}
+
+.map .section-title .span {
+  color: var(--kappel);
+}
+
+.map .section-text {
+  color: var(--gray-web);
+  font-size: var(--fs-5);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.map .video-card {
+  position: relative;
+  background-color: var(--white);
+  border-radius: var(--radius-10);
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+}
+
+.map .map-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.map .map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.map .shape {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .map .shape {
+    display: block;
+    position: absolute;
+  }
+
+  .map .video-shape-1 {
+    top: -50px;
+    right: -50px;
+  }
+
+  .map .video-shape-2 {
+    bottom: -50px;
+    left: -50px;
+  }
+}
+
+/* Animation for section elements */
+.map .animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.map .animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Contact Section Styles */
+.contact {
+  position: relative;
+  overflow: hidden;
+  padding-block: 60px;
+}
+
+.contact-content {
+  display: grid;
+  gap: 40px;
+}
+
+.contact-info {
+  text-align: center;
+}
+
+.contact .section-subtitle {
+  color: var(--radical-red);
+}
+
+.contact .section-title {
+  margin-bottom: 20px;
+}
+
+.contact .section-title .span {
+  color: var(--kappel);
+}
+
+.contact .section-text {
+  color: var(--gray-web);
+  font-size: var(--fs-5);
+  margin-bottom: 30px;
+}
+
+.contact-details {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.contact-details li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  color: var(--eerie-black-1);
+}
+
+.contact-details ion-icon {
+  color: var(--kappel);
+  font-size: 20px;
+}
+
+.contact-form {
+  background-color: var(--white);
+  padding: 20px; /* Reduced padding */
+  border-radius: var(--radius-10);
+  box-shadow: var(--shadow-2);
+}
+
+.input-wrapper {
+  position: relative;
+  margin-bottom: 15px; /* Slightly reduced margin */
+}
+
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 12px 35px 12px 15px; /* Adjusted padding */
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius-5);
+  font-size: var(--fs-5);
+  color: var(--eerie-black-1);
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus,
+.textarea-field:focus {
+  border-color: var(--kappel);
+  outline: none;
+}
+
+.input-wrapper ion-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Moved icon slightly to the left */
+  transform: translateY(-50%);
+  color: var(--gray-web);
+}
+
+.textarea-field {
+  height: 100px; /* Reduced height */
+  resize: vertical;
+  padding-top: 12px;
+}
+
+.textarea-field + ion-icon {
+  top: 20px; /* Adjusted icon position for textarea */
+}
+
+.contact .btn-primary {
+  width: 100%;
+  background-color: var(--kappel);
+  color: var(--white);
+  font-weight: var(--fw-600);
+  transition: background-color 0.3s ease;
+}
+
+.contact .btn-primary:hover {
+  background-color: var(--radical-red);
+}
+
+.contact-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/contact-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+/* Animation for section elements */
+.contact .animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.contact .animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .contact-info {
+    text-align: left;
+  }
+
+  .contact-details li {
+    justify-content: flex-start;
+  }
+}
+
+.course-description {
+  color: var(--gray-web);
+  font-size: var(--fs-4); /* Increased from var(--fs-4) to var(--fs-3) */
+  font-weight: 400; /* Added to make text slightly bolder */
+  font-style: italic; /* Added to make text italic */
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.course-details > div {
+  padding: 40px 30px;
+  margin-bottom: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-10);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.course-details > div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background-color: var(--kappel);
+  border-radius: 2px;
+}
+
+.course-details > div:nth-child(even) {
+  background-color: rgba(240, 240, 240, 0.8);
+}
+
+.course-details > div:last-child {
+  margin-bottom: 0;
+}
+
+/* Specific styling for the main course sections */
+.course-content,
+.course-benefits,
+.course-structure,
+.exam-info {
+  padding: 40px 30px;
+  margin-bottom: 60px; /* Increased margin for more separation */
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
+  border-radius: var(--radius-10);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+  position: relative;
+  border-left: 5px solid var(--kappel); /* Add a colored border on the left */
+}
+
+/* Alternating background colors for better distinction */
+.course-benefits,
+.exam-info {
+  background-color: rgba(240, 245, 255, 0.9); /* Light blue tint */
+}
+
+
+
+/* Style the section titles more prominently */
+.course-content .section-title,
+.course-benefits .section-title,
+.course-structure .section-title,
+.exam-info .section-title {
+  color: var(--eerie-black-1);
+  font-size: var(--fs-2);
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--light-gray);
+}
+
+/* Add some extra spacing for the content within each section */
+.course-list,
+.course-description {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .course-content,
+  .course-benefits,
+  .course-structure,
+  .exam-info {
+    padding: 30px 20px;
+    margin-bottom: 40px;
+  }
+
+  .course-list,
+  .course-description {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.course-list li strong {
+  font-weight: 700; /* or you can use 'bold' */
 }
