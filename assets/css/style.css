@@ -641,12 +641,14 @@ body {
   text-align: center;
   height: 55px;
   overflow: hidden;
+  vertical-align: top; /* Add this line */
 }
 
 .flip {
   display: inline-block;
   position: relative;
   animation: flip 18s cubic-bezier(0.23, 1, 0.32, 1.2) infinite;
+  top: 0; /* Add this line */
 }
 
 .flip > span {
@@ -2947,4 +2949,33 @@ main {
   .category-card .card-title {
     min-height: auto;
   }
+}
+
+/* Back to Top Button */
+.back-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--kappel);
+  color: var(--white);
+  font-size: 22px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-top-btn.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-top-btn:hover {
+  background-color: var(--radical-red);
 }
