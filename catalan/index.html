@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary meta tags -->
-    <title>A Plus English Academy</title>
-    <meta name="title" content="A Plus English Academy" />
+    <title>Acadèmia d'Anglès A Plus</title>
+    <meta name="title" content="Acadèmia d'Anglès A Plus" />
     <meta
       name="description"
-      content="Learn English with A Plus English Academy. Unlock a world of opportunities with our expert language courses."
+      content="Aprèn anglès amb l'Acadèmia d'Anglès A Plus. Desbloqueja un món d'oportunitats amb els nostres cursos d'idiomes experts."
     />
 
     <!-- Favicon -->
     <link
       rel="shortcut icon"
-      href="./assets/images/logo-aplus.png"
+      href="../assets/images/logo-aplus.png"
       type="image/png"
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -32,9 +32,9 @@
     />
 
     <!-- Preload Images -->
-    <link rel="preload" as="image" href="./assets/images/hero-bg.svg" />
-    <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg" />
-    <link rel="preload" as="image" href="./assets/images/hero-shape-2.png" />
+    <link rel="preload" as="image" href="../assets/images/hero-bg.svg" />
+    <link rel="preload" as="image" href="../assets/images/hero-shape-1.svg" />
+    <link rel="preload" as="image" href="../assets/images/hero-shape-2.png" />
 
     <style>
       html {
@@ -44,7 +44,7 @@
   </head>
 
   <body id="top" class="home-page">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">Saltar al contingut principal</a>
 
     <!-- Progress Bar -->
     <div class="progress__container">
@@ -56,7 +56,7 @@
       <div class="container">
         <a href="#" class="logo" aria-label="A Plus logo">
           <img
-            src="./assets/images/logo-aplus.png"
+            src="../assets/images/logo-aplus.png"
             width="100"
             height="20"
             alt="A Plus logo"
@@ -67,7 +67,7 @@
           <div class="wrapper">
             <a href="#" class="logo" aria-label="A Plus logo">
               <img
-                src="./assets/images/logo-aplus.png"
+                src="../assets/images/logo-aplus.png"
                 width="100"
                 height="50"
                 alt="A Plus logo"
@@ -76,7 +76,7 @@
 
             <button
               class="nav-close-btn"
-              aria-label="Close menu"
+              aria-label="Tancar menú"
               data-nav-toggler
             >
               <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
@@ -87,74 +87,86 @@
             <li class="navbar-item">
               <a href="#hero" class="navbar-link" data-nav-link>
                 <img
-                  src="./assets/images/home1.png"
-                  alt="Home"
+                  src="../assets/images/home1.png"
+                  alt="Inici"
                   width="20"
                   height="20"
                 />
-                Home
+                Inici
               </a>
             </li>
 
             <li class="navbar-item">
               <a href="#courses" class="navbar-link" data-nav-link>
                 <img
-                  src="./assets/images/book1.png"
-                  alt="Courses"
+                  src="../assets/images/book1.png"
+                  alt="Cursos"
                   width="20"
                   height="20"
                 />
-                Courses
+                Cursos
               </a>
             </li>
 
             <li class="navbar-item">
               <a href="#about" class="navbar-link" data-nav-link>
                 <img
-                  src="./assets/images/about1.png"
-                  alt="About Us"
+                  src="../assets/images/about1.png"
+                  alt="Sobre Nosaltres"
                   width="20"
                   height="20"
                 />
-                About Us
+                Sobre Nosaltres
               </a>
             </li>
 
             <li class="navbar-item">
               <a href="#location" class="navbar-link" data-nav-link>
                 <img
-                  src="./assets/images/location1.png"
-                  alt="Location"
+                  src="../assets/images/location1.png"
+                  alt="Ubicació"
                   width="20"
                   height="20"
                 />
-                Location
+                Ubicació
               </a>
             </li>
 
             <li class="navbar-item">
               <a href="#contact" class="navbar-link" data-nav-link>
                 <img
-                  src="./assets/images/contact.png"
-                  alt="Contact"
+                  src="../assets/images/contact.png"
+                  alt="Contacte"
                   width="20"
                   height="20"
                 />
-                Contact
+                Contacte
               </a>
             </li>
 
+            <!-- Updated dropdown menu with Catalan option -->
             <li class="navbar-item language-dropdown">
-              <button class="dropbtn navbar-link" aria-haspopup="true" aria-expanded="false">
-                <img src="./assets/images/languages.png" alt="Language" width="20" height="20" />
-                <span>Language</span>
-                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+              <button
+                class="dropbtn navbar-link"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img
+                  src="../assets/images/languages.png"
+                  alt="Idioma"
+                  width="20"
+                  height="20"
+                />
+                <span>Idioma</span>
+                <ion-icon
+                  name="chevron-down-outline"
+                  aria-hidden="true"
+                ></ion-icon>
               </button>
-              <div class="dropdown-content">
-                <a href="spanish/index.html" data-lang="es">Español</a>
-                <a href="catalan/index.html" data-lang="ca">Català</a>
-                <!-- Add more language options as needed -->
-              </div>
+              <ul class="dropdown-content">
+                <li><a href="../index.html">English</a></li>
+                <li><a href="../spanish/index.html">Español</a></li>
+              </ul>
             </li>
           </ul>
         </nav>
@@ -162,16 +174,16 @@
         <div class="header-actions">
           <a href="#" class="btn btn-login">
             <img
-              src="./assets/images/login1.png"
-              alt="Login"
+              src="../assets/images/login1.png"
+              alt="Iniciar sessió"
               width="20"
               height="20"
             />
-            Login
+            Iniciar sessió
           </a>
           <button
             class="header-action-btn"
-            aria-label="Open menu"
+            aria-label="Obrir menú"
             data-nav-toggler
           >
             <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
@@ -185,38 +197,38 @@
     <main id="main-content">
       <article>
         <!-- Hero Section -->
-        <section class="section hero has-bg-image" id="hero" aria-label="Home">
+        <section class="section hero has-bg-image" id="hero" aria-label="Inici">
           <div class="hero-bg"></div>
           <div class="container">
             <div class="hero-content">
               <h1 class="h1 section-title">
-                Unlock a world of <br />
+                Desbloqueja un món de <br />
                 <span class="flip-container">
                   <span class="flip">
-                    <span><span>Fun</span></span>
-                    <span><span>Adventure</span></span>
-                    <span><span>Opportunities</span></span>
-                    <span><span>Imagination</span></span>
-                    <span><span>Friendships</span></span>
-                    <span><span>Creativity</span></span>
+                    <span><span>Diversió</span></span>
+                    <span><span>Aventura</span></span>
+                    <span><span>Oportunitats</span></span>
+                    <span><span>Imaginació</span></span>
+                    <span><span>Amistats</span></span>
+                    <span><span>Creativitat</span></span>
                   </span>
                 </span>
                 <br />
-                with <span class="span">A Plus</span> Academy
+                amb l'Acadèmia <span class="span">A Plus</span>
               </h1>
 
               <p class="hero-text">
-                Open yourself to a world of possibilities. <br />
-                <span class="span">Learn English with us!</span>
+                Obre't a un món de possibilitats. <br />
+                <span class="span">Aprèn anglès amb nosaltres!</span>
               </p>
 
               <a href="#courses" class="btn has-before">
-                <span class="span">Explore Courses</span>
+                <span class="span">Explorar Cursos</span>
 
                 <ion-icon
                   name="arrow-forward-outline"
                   aria-hidden="true"
-                  aria-label="View courses"
+                  aria-label="Veure cursos"
                 ></ion-icon>
               </a>
             </div>
@@ -227,10 +239,10 @@
                 style="--width: 270; --height: 300"
               >
                 <img
-                  src="./assets/images/hero-3.jpeg"
+                  src="../assets/images/hero-3.jpeg"
                   width="270"
                   height="300"
-                  alt="Students learning English"
+                  alt="Estudiants aprenent anglès"
                   class="img-cover"
                   loading="lazy"
                 />
@@ -241,17 +253,17 @@
                 style="--width: 240; --height: 370"
               >
                 <img
-                  src="./assets/images/hero-2.jpeg"
+                  src="../assets/images/hero-2.jpeg"
                   width="240"
                   height="370"
-                  alt="English learning environment"
+                  alt="Entorn d'aprenentatge d'anglès"
                   class="img-cover"
                   loading="lazy"
                 />
               </div>
 
               <img
-                src="./assets/images/hero-shape-2.png"
+                src="../assets/images/hero-shape-2.png"
                 width="622"
                 height="551"
                 alt=""
@@ -263,18 +275,19 @@
         </section>
 
         <!-- Courses Section -->
-        <section class="section category" id="courses" aria-label="Courses">
+        <section class="section category" id="courses" aria-label="Cursos">
           <div class="container">
-            <p class="section-subtitle">OUR ENGLISH COURSES</p>
+            <p class="section-subtitle">ELS NOSTRES CURSOS D'ANGLÈS</p>
 
             <h2 class="h2 section-title courses-title">
-              <span class="animate-text">Tailored English Courses</span>
-              <span class="span animate-highlight">for Every Level</span>
+              <span class="animate-text">Cursos d'Anglès Personalitzats</span>
+              <span class="span animate-highlight">per a Cada Nivell</span>
             </h2>
 
             <p class="section-text">
-              From beginners to advanced learners, we offer comprehensive
-              courses to help you achieve your English language goals
+              Des de principiants fins a estudiants avançats, oferim cursos
+              complets per ajudar-te a assolir els teus objectius en l'idioma
+              anglès
             </p>
 
             <ul class="grid-list">
@@ -282,24 +295,24 @@
                 <div class="category-card" style="--color: 170, 75%, 41%">
                   <div class="card-icon">
                     <img
-                      src="./assets/images/newbie-1.png"
+                      src="../assets/images/newbie-1.png"
                       width="50"
                       height="50"
                       loading="lazy"
-                      alt="A2 Key icon"
+                      alt="Icona A2 Key"
                       class="img"
                     />
                   </div>
 
-                  <h3 class="h3 card-title">A2 Key (KET) Preparation</h3>
+                  <h3 class="h3 card-title">Preparació A2 Key (KET)</h3>
 
                   <p class="card-text">
-                    Perfect for beginners looking to build a strong foundation
-                    in English. Focus on essential skills for everyday
-                    communication.
+                    Perfecte per a principiants que busquen construir una base
+                    sòlida en anglès. Enfocament en habilitats essencials per a
+                    la comunicació diària.
                   </p>
 
-                  <a href="a2-key.html" class="card-link">Learn More</a>
+                  <a href="a2-key.html" class="card-link">Saber Més</a>
                 </div>
               </li>
 
@@ -307,25 +320,24 @@
                 <div class="category-card" style="--color: 351, 83%, 61%">
                   <div class="card-icon">
                     <img
-                      src="./assets/images/intermediate-1.png"
+                      src="../assets/images/intermediate-1.png"
                       width="50"
                       height="50"
                       loading="lazy"
-                      alt="B1 Preliminary icon"
+                      alt="Icona B1 Preliminary"
                       class="img"
                     />
                   </div>
 
-                  <h3 class="h3 card-title">
-                    B1 Preliminary (PET) Preparation
-                  </h3>
+                  <h3 class="h3 card-title">Preparació B1 Preliminary (PET)</h3>
 
                   <p class="card-text">
-                    Develop practical English skills for everyday use. Expand
-                    your vocabulary and improve your communication abilities.
+                    Desenvolupa habilitats pràctiques d'anglès per a ús
+                    quotidià. Amplia el teu vocabulari i millora les teves
+                    habilitats de comunicació.
                   </p>
 
-                  <a href="b1-preliminary.html" class="card-link">Learn More</a>
+                  <a href="b1-preliminary.html" class="card-link">Saber Més</a>
                 </div>
               </li>
 
@@ -333,23 +345,24 @@
                 <div class="category-card" style="--color: 229, 75%, 58%">
                   <div class="card-icon">
                     <img
-                      src="./assets/images/advanced-1.png"
+                      src="../assets/images/advanced-1.png"
                       width="50"
                       height="50"
                       loading="lazy"
-                      alt="B2 First icon"
+                      alt="Icona B2 First"
                       class="img"
                     />
                   </div>
 
-                  <h3 class="h3 card-title">B2 First (FCE) Preparation</h3>
+                  <h3 class="h3 card-title">Preparació B2 First (FCE)</h3>
 
                   <p class="card-text">
-                    Achieve upper-intermediate proficiency. Prepare for academic
-                    and professional English use with advanced language skills.
+                    Assoleix un nivell intermedi-alt de competència. Prepara't
+                    per a l'ús acadèmic i professional de l'anglès amb
+                    habilitats lingüístiques avançades.
                   </p>
 
-                  <a href="b2-first.html" class="card-link">Learn More</a>
+                  <a href="b2-first.html" class="card-link">Saber Més</a>
                 </div>
               </li>
 
@@ -357,24 +370,24 @@
                 <div class="category-card" style="--color: 42, 94%, 55%">
                   <div class="card-icon">
                     <img
-                      src="./assets/images/advanced-2.png"
+                      src="../assets/images/advanced-2.png"
                       width="50"
                       height="50"
                       loading="lazy"
-                      alt="C1 Advanced icon"
+                      alt="Icona C1 Advanced"
                       class="img"
                     />
                   </div>
 
-                  <h3 class="h3 card-title">C1 Advanced (CAE) Preparation</h3>
+                  <h3 class="h3 card-title">Preparació C1 Advanced (CAE)</h3>
 
                   <p class="card-text">
-                    Master complex English skills. Ideal for those seeking
-                    high-level proficiency for academic or professional
-                    purposes.
+                    Domina habilitats complexes d'anglès. Ideal per a aquells
+                    que busquen un alt nivell de competència per a fins
+                    acadèmics o professionals.
                   </p>
 
-                  <a href="c1-advanced.html" class="card-link">Learn More</a>
+                  <a href="c1-advanced.html" class="card-link">Saber Més</a>
                 </div>
               </li>
 
@@ -382,26 +395,24 @@
                 <div class="category-card" style="--color: 260, 100%, 67%">
                   <div class="card-icon">
                     <img
-                      src="./assets/images/c1.png"
+                      src="../assets/images/c1.png"
                       width="50"
                       height="50"
                       loading="lazy"
-                      alt="C2 Proficiency icon"
+                      alt="Icona C2 Proficiency"
                       class="img"
                     />
                   </div>
 
-                  <h3 class="h3 card-title">
-                    C2 Proficiency (CPE) Preparation
-                  </h3>
+                  <h3 class="h3 card-title">Preparació C2 Proficiency (CPE)</h3>
 
                   <p class="card-text">
-                    Reach the highest level of English proficiency. Perfect for
-                    those aiming for native-like fluency and academic
-                    excellence.
+                    Assoleix el nivell més alt de competència en anglès.
+                    Perfecte per a aquells que aspiren a una fluïdesa similar a
+                    la nativa i excel·lència acadèmica.
                   </p>
 
-                  <a href="c2-proficiency.html" class="card-link">Learn More</a>
+                  <a href="c2-proficiency.html" class="card-link">Saber Més</a>
                 </div>
               </li>
 
@@ -409,25 +420,25 @@
                 <div class="category-card" style="--color: 330, 75%, 60%">
                   <div class="card-icon">
                     <img
-                      src="./assets/images/conversation.png"
+                      src="../assets/images/conversation.png"
                       width="50"
                       height="50"
                       loading="lazy"
-                      alt="Conversational English icon"
+                      alt="Icona Anglès Conversacional"
                       class="img"
                     />
                   </div>
 
-                  <h3 class="h3 card-title">Conversational English</h3>
+                  <h3 class="h3 card-title">Anglès Conversacional</h3>
 
                   <p class="card-text">
-                    Improve your speaking skills without exam pressure. Focus on
-                    practical, everyday conversation topics and natural speech
-                    patterns.
+                    Millora les teves habilitats orals sense la pressió d'un
+                    examen. Enfoca't en temes de conversa pràctics i quotidians
+                    i patrons de parla naturals.
                   </p>
 
                   <a href="conversational-english.html" class="card-link"
-                    >Learn More</a
+                    >Saber Més</a
                   >
                 </div>
               </li>
@@ -436,12 +447,12 @@
         </section>
 
         <!-- About Section -->
-        <section class="section about" id="about" aria-label="About Us">
+        <section class="section about" id="about" aria-label="Sobre Nosaltres">
           <div class="container">
             <figure class="about-banner">
               <div class="video-container" style="--width: 520; --height: 370">
                 <video
-                  src="./assets/videos/us-video.mp4"
+                  src="../assets/videos/us-video.mp4"
                   width="520"
                   height="370"
                   autoplay
@@ -453,7 +464,7 @@
               </div>
 
               <img
-                src="./assets/images/about-shape-3.png"
+                src="../assets/images/about-shape-3.png"
                 width="722"
                 height="528"
                 loading="lazy"
@@ -464,23 +475,23 @@
             </figure>
 
             <div class="about-content">
-              <p class="section-subtitle">About Us</p>
+              <p class="section-subtitle">Sobre Nosaltres</p>
 
               <h2 class="h2 section-title">
-                Over
-                <span class="span">20 Years of Experience</span> Teaching
-                English
+                Més de
+                <span class="span">20 Anys d'Experiència</span> Ensenyant Anglès
               </h2>
 
               <p class="section-text">
-                We take pride in our more than 20 years of experience teaching
-                English to students of all ages and levels. We've dedicated
-                decades to perfecting our educational approach to provide our
-                students with an exceptional learning experience.
+                Ens enorgullim dels nostres més de 20 anys d'experiència
+                ensenyant anglès a estudiants de totes les edats i nivells. Hem
+                dedicat dècades a perfeccionar el nostre enfocament educatiu per
+                proporcionar als nostres estudiants una experiència
+                d'aprenentatge excepcional.
               </p>
 
               <img
-                src="./assets/images/about-shape-4.svg"
+                src="../assets/images/about-shape-4.svg"
                 width="100"
                 height="100"
                 loading="lazy"
@@ -493,14 +504,14 @@
         </section>
 
         <!-- Stats Section -->
-        <section class="section stats" aria-label="Statistics">
+        <section class="section stats" aria-label="Estadístiques">
           <div class="container">
             <ul class="grid-list">
               <li>
                 <div class="stats-card" style="--color: 170, 75%, 41%">
                   <h3 class="card-title">1000+</h3>
 
-                  <p class="card-text">Satisfied Students</p>
+                  <p class="card-text">Estudiants Satisfets</p>
                 </div>
               </li>
 
@@ -508,7 +519,7 @@
                 <div class="stats-card" style="--color: 351, 83%, 61%">
                   <h3 class="card-title">5+</h3>
 
-                  <p class="card-text">English Levels</p>
+                  <p class="card-text">Nivells d'Anglès</p>
                 </div>
               </li>
 
@@ -516,7 +527,7 @@
                 <div class="stats-card" style="--color: 260, 100%, 67%">
                   <h3 class="card-title">98%</h3>
 
-                  <p class="card-text">Satisfaction Rate</p>
+                  <p class="card-text">Taxa de Satisfacció</p>
                 </div>
               </li>
 
@@ -524,7 +535,7 @@
                 <div class="stats-card" style="--color: 42, 94%, 55%">
                   <h3 class="card-title">20+</h3>
 
-                  <p class="card-text">Years of Experience</p>
+                  <p class="card-text">Anys d'Experiència</p>
                 </div>
               </li>
             </ul>
@@ -535,18 +546,19 @@
         <section
           class="section map has-bg-image"
           id="location"
-          aria-label="Location"
+          aria-label="Ubicació"
         >
           <div class="container">
-            <p class="section-subtitle animate-on-scroll">Location</p>
+            <p class="section-subtitle animate-on-scroll">Ubicació</p>
 
             <h2 class="h2 section-title animate-on-scroll">
-              Where You Can <span class="span">Find Us</span>
+              On Ens <span class="span">Pots Trobar</span>
             </h2>
 
             <p class="section-text animate-on-scroll">
-              Visit us at our convenient location in the heart of the city.
-              We're easily accessible and ready to welcome you!
+              Visita'ns a la nostra ubicació convenient al cor de la ciutat. Som
+              fàcilment accessibles i estem preparats per donar-te la
+              benvinguda!
             </p>
 
             <div class="video-card animate-on-scroll">
@@ -557,18 +569,18 @@
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
-                  aria-label="Location map"
+                  aria-label="Mapa d'ubicació"
                 ></iframe>
               </div>
               <img
-                src="./assets/images/video-shape-1.png"
+                src="../assets/images/video-shape-1.png"
                 loading="lazy"
                 alt=""
                 class="shape video-shape-1"
                 aria-hidden="true"
               />
               <img
-                src="./assets/images/video-shape-2.png"
+                src="../assets/images/video-shape-2.png"
                 width="158"
                 height="174"
                 loading="lazy"
@@ -584,20 +596,20 @@
         <section
           class="section testimonials"
           id="testimonials"
-          aria-label="Testimonials"
+          aria-label="Testimonis"
         >
           <div class="container">
             <p class="section-subtitle animate-on-scroll">
-              What Our Students Say
+              El Que Diuen Els Nostres Estudiants
             </p>
 
             <h2 class="h2 section-title animate-on-scroll">
-              Student <span class="span">Testimonials</span>
+              Testimonis <span class="span">d'Estudiants</span>
             </h2>
 
             <p class="section-text animate-on-scroll">
-              Hear from our students about their experiences learning English
-              with A Plus Academy.
+              Escolta els nostres estudiants sobre les seves experiències
+              aprenent anglès amb l'Acadèmia A Plus.
             </p>
 
             <div class="testimonial-carousel animate-on-scroll">
@@ -606,45 +618,45 @@
                   <!-- Testimonial 1 -->
                   <div class="testimonial-card">
                     <p class="testimonial-text">
-                      Excelente profesora!! Mis hijos y nosotros súper contentos
-                      con el progreso y cómo les enseña. Lo recomiendo
-                      totalmente.
+                      Excel·lent professora!! Els meus fills i nosaltres súper
+                      contents amb el progrés i com els ensenya. Ho recomano
+                      totalment.
                     </p>
                     <h3 class="testimonial-name">Yolanda Garcia</h3>
-                    <p class="testimonial-position">Student Parent</p>
+                    <p class="testimonial-position">Mare d'Estudiant</p>
                   </div>
 
                   <!-- Testimonial 2 -->
                   <div class="testimonial-card">
                     <p class="testimonial-text">
-                      Una excelente profesional, mi niña(5 años) aprende mucho
-                      entre juego y canciones. Hace que aprender sea
-                      divertido!!!
+                      Una excel·lent professional, la meva nena (5 anys) aprèn
+                      molt entre joc i cançons. Fa que aprendre sigui
+                      divertit!!!
                     </p>
                     <h3 class="testimonial-name">Maria Madyudya</h3>
-                    <p class="testimonial-position">Student Parent</p>
+                    <p class="testimonial-position">Mare d'Estudiant</p>
                   </div>
 
                   <!-- Testimonial 3 -->
                   <div class="testimonial-card">
                     <p class="testimonial-text">
-                      Un trato muy agradable, gran profesora de inglés y paula
-                      está muy contenta con ella. Recomiendo 100%
+                      Un tracte molt agradable, gran professora d'anglès i la
+                      Paula està molt contenta amb ella. Recomano 100%
                     </p>
                     <h3 class="testimonial-name">Montse Moreno Borrego</h3>
-                    <p class="testimonial-position">Student Parent</p>
+                    <p class="testimonial-position">Mare d'Estudiant</p>
                   </div>
                 </div>
               </div>
               <button
                 class="carousel-button prev"
-                aria-label="Previous testimonial"
+                aria-label="Testimoni anterior"
               >
                 ❮
               </button>
               <button
                 class="carousel-button next"
-                aria-label="Next testimonial"
+                aria-label="Següent testimoni"
               >
                 ❯
               </button>
@@ -655,18 +667,18 @@
     </main>
 
     <!-- Contact Form -->
-    <section class="section contact" id="contact" aria-label="Contact">
+    <section class="section contact" id="contact" aria-label="Contacte">
       <div class="container">
         <div class="contact-content">
           <div class="contact-info">
-            <p class="section-subtitle animate-on-scroll">Get in Touch</p>
+            <p class="section-subtitle animate-on-scroll">Posa't en Contacte</p>
             <h2 class="h2 section-title animate-on-scroll">
-              Ready to <span class="span">Start Learning?</span>
+              Preparat per <span class="span">Començar a Aprendre?</span>
             </h2>
             <p class="section-text animate-on-scroll">
-              We're here to answer your questions and help you begin your
-              English learning journey. Fill out the form, and we'll get back to
-              you soon!
+              Som aquí per respondre les teves preguntes i ajudar-te a començar
+              el teu viatge d'aprenentatge d'anglès. Omple el formulari i ens
+              posarem en contacte amb tu aviat!
             </p>
             <ul class="contact-details animate-on-scroll">
               <li>
@@ -680,7 +692,7 @@
               <li>
                 <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
                 <span
-                  >Av. Dr. Josep Anton Segarra 28-30, Mont-Roig del Camp</span
+                  >Av. Dr. Josep Anton Segarra 28-30, Mont-roig del Camp</span
                 >
               </li>
             </ul>
@@ -696,7 +708,7 @@
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Your Name"
+                placeholder="El Teu Nom"
                 required
                 class="input-field"
                 aria-required="true"
@@ -709,7 +721,7 @@
                 type="email"
                 id="email"
                 name="email"
-                placeholder="Your Email"
+                placeholder="El Teu Correu Electrònic"
                 required
                 class="input-field"
                 aria-required="true"
@@ -722,7 +734,7 @@
                 type="tel"
                 id="phone"
                 name="phone"
-                placeholder="Phone Number"
+                placeholder="Número de Telèfon"
                 required
                 class="input-field"
                 aria-required="true"
@@ -734,14 +746,16 @@
               <textarea
                 id="message"
                 name="message"
-                placeholder="Your Message"
+                placeholder="El Teu Missatge"
                 required
                 class="textarea-field"
                 aria-required="true"
               ></textarea>
               <ion-icon name="chatbubble-outline" aria-hidden="true"></ion-icon>
             </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" class="btn btn-primary">
+              Enviar Missatge
+            </button>
           </form>
         </div>
       </div>
@@ -752,7 +766,7 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-text">
-          <h2 class="followus-text">Follow us:</h2>
+          <h2 class="followus-text">Segueix-nos:</h2>
         </div>
         <div class="footer-list">
           <ul class="social-list">
@@ -763,7 +777,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src="assets/icons/instagram.svg" alt="Instagram" />
+                <img src="../assets/icons/instagram.svg" alt="Instagram" />
               </a>
             </li>
             <li class="social-media-button">
@@ -773,7 +787,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src="assets/icons/twitter.svg" alt="Twitter" />
+                <img src="../assets/icons/twitter.svg" alt="Twitter" />
               </a>
             </li>
             <li class="social-media-button">
@@ -783,7 +797,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src="assets/icons/youtube.svg" alt="YouTube" />
+                <img src="../assets/icons/youtube.svg" alt="YouTube" />
               </a>
             </li>
             <li class="social-media-button">
@@ -793,7 +807,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
+                <img src="../assets/icons/linkedin.svg" alt="LinkedIn" />
               </a>
             </li>
           </ul>
@@ -805,14 +819,14 @@
     <a
       href="#top"
       class="back-top-btn"
-      aria-label="Back to top"
+      aria-label="Tornar a dalt"
       data-back-top-btn
     >
       <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
     </a>
 
     <!-- Custom JavaScript -->
-    <script src="./assets/js/script.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
 
     <!-- Ionicons -->
     <script
@@ -916,22 +930,29 @@
 
     <!-- Dropdown menu script -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const dropdownBtn = document.querySelector('.language-dropdown .dropbtn');
-        const dropdownContent = document.querySelector('.language-dropdown .dropdown-content');
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropdownBtn = document.querySelector(
+          ".language-dropdown .dropbtn"
+        );
+        const dropdownContent = document.querySelector(
+          ".language-dropdown .dropdown-content"
+        );
 
-        dropdownBtn.addEventListener('click', function(e) {
+        dropdownBtn.addEventListener("click", function (e) {
           e.preventDefault();
-          dropdownContent.classList.toggle('show');
-          this.setAttribute('aria-expanded', dropdownContent.classList.contains('show'));
+          dropdownContent.classList.toggle("show");
+          this.setAttribute(
+            "aria-expanded",
+            dropdownContent.classList.contains("show")
+          );
         });
 
         // Close the dropdown if clicked outside
-        window.addEventListener('click', function(e) {
-          if (!e.target.matches('.dropbtn') && !e.target.closest('.dropbtn')) {
-            if (dropdownContent.classList.contains('show')) {
-              dropdownContent.classList.remove('show');
-              dropdownBtn.setAttribute('aria-expanded', 'false');
+        window.addEventListener("click", function (e) {
+          if (!e.target.matches(".dropbtn") && !e.target.closest(".dropbtn")) {
+            if (dropdownContent.classList.contains("show")) {
+              dropdownContent.classList.remove("show");
+              dropdownBtn.setAttribute("aria-expanded", "false");
             }
           }
         });
