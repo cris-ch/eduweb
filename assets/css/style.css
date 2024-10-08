@@ -2946,6 +2946,78 @@ main {
   }
 }
 
+/* Language dropdown menu */
+.language-dropdown-container {
+  margin-left: auto; /* Push to the right */
+}
+
+.language-dropdown .dropbtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.language-dropdown .dropbtn img {
+  order: -1; /* Move icon to the right of the text */
+}
+
+.language-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--white);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.language-dropdown .dropdown-content a {
+  color: var(--eerie-black-1);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.language-dropdown .dropdown-content a:hover {
+  background-color: var(--light-gray);
+}
+
+.language-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.language-dropdown .dropbtn:hover,
+.language-dropdown .dropbtn:focus {
+  color: var(--red-orange-color-wheel);
+}
+
+/* Ensure the dropdown works on mobile */
+@media (max-width: 768px) {
+  .language-dropdown-container {
+    margin-left: 0;
+  }
+  
+  .language-dropdown .dropdown-content {
+    position: static;
+    display: none;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  
+  .language-dropdown .dropdown-content a {
+    color: inherit;
+  }
+  
+  .language-dropdown .dropdown-content a:hover {
+    background-color: transparent;
+    color: var(--red-orange-color-wheel);
+  }
+}
+
 /* Course cards styling */
 .category-card {
   background-color: hsla(var(--color), 0.1);
