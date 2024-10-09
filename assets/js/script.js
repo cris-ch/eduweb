@@ -1,223 +1,76 @@
 "use strict";
 
-/**
- * Add event on element(s)
- * @param {Element|NodeList} elem - The element or list of elements
- * @param {string} type - The event type
- * @param {Function} callback - The callback function
- */
-const addEventOnElem = (elem, type, callback) => {
-  if (elem instanceof NodeList) {
-    elem.forEach(el => el.addEventListener(type, callback));
-  } else {
-    elem.addEventListener(type, callback);
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("DOM fully loaded and parsed");
+
+  // Navbar toggle
+  const navbar = document.querySelector("[data-navbar]");
+  const navTogglers = document.querySelectorAll("[data-nav-toggler]");
+  const overlay = document.querySelector("[data-overlay]");
+
+  console.log("Navbar:", navbar);
+  console.log("Nav togglers:", navTogglers);
+  console.log("Overlay:", overlay);
+
+  function toggleNavbar() {
+    console.log("Toggle navbar function called");
+    
+    navbar.classList.toggle("active");
+    overlay.classList.toggle("active");
+    document.body.classList.toggle("nav-active");
+
+    console.log("Navbar classList:", navbar.classList);
+    console.log("Overlay classList:", overlay.classList);
+    console.log("Body classList:", document.body.classList);
+
+    // Log computed styles
+    const navbarStyles = window.getComputedStyle(navbar);
+    console.log("Navbar computed styles:");
+    console.log("- transform:", navbarStyles.transform);
+    console.log("- left:", navbarStyles.left);
+    console.log("- visibility:", navbarStyles.visibility);
+    console.log("- z-index:", navbarStyles.zIndex);
+
+    // Force a reflow to ensure the styles are applied immediately
+    navbar.offsetHeight;
+
+    // Remove this line:
+    // alert("Navbar toggled. Check the console and inspect the page.");
   }
-};
 
-/**
- * navbar toggle
- */
-
-const navbar = document.querySelector("[data-navbar]");
-const navTogglers = document.querySelectorAll("[data-nav-toggler]");
-const navLinks = document.querySelectorAll("[data-nav-link]");
-const overlay = document.querySelector("[data-overlay]");
-
-const toggleNavbar = function () {
-  navbar.classList.toggle("active");
-  overlay.classList.toggle("active");
-};
-
-addEventOnElem(navTogglers, "click", toggleNavbar);
-
-const closeNavbar = function () {
-  navbar.classList.remove("active");
-  overlay.classList.remove("active");
-};
-
-addEventOnElem(navLinks, "click", closeNavbar);
-
-/**
- * header active when scroll down to 100px
- */
-
-const header = document.querySelector("[data-header]");
-const backTopBtn = document.querySelector("[data-back-top-btn]");
-
-const activeElem = function () {
-  if (window.scrollY > 100) {
-    header.classList.add("active");
-    backTopBtn.classList.add("active");
-  } else {
-    header.classList.remove("active");
-    backTopBtn.classList.remove("active");
-  }
-};
-
-addEventOnElem(window, "scroll", activeElem);
-
-// Search Functionality
-// const searchInput = document.querySelector(".search-input");
-// const searchBtn = document.querySelector(".search-btn");
-// const mainContent = document.querySelector("main"); // Select the <main> element
-// const pageContent = mainContent.innerText; // Get the text content of the main content area
-
-// searchBtn.addEventListener("click", performSearch);
-
-// searchInput.addEventListener("keydown", (event) => {
-//   if (event.key === "Enter") {
-//     performSearch();
-//   }
-// });
-
-// function performSearch() {
-//   const searchQuery = searchInput.value.trim().toLowerCase();
-//   if (searchQuery) {
-//     removeHighlights();
-//     const matches = findMatches(searchQuery, pageContent);
-//     if (matches.length > 0) {
-//       const firstMatchElement = highlightMatches(matches, mainContent);
-//       if (firstMatchElement) {
-//         firstMatchElement.scrollIntoView({ behavior: "smooth", block: "center" });
-//         searchInput.setAttribute('aria-label', `Found ${matches.length} match(es) for "${searchQuery}"`);
-//       } else {
-//         searchInput.setAttribute('aria-label', `No matches found for "${searchQuery}"`);
-//       }
-//     } else {
-//       searchInput.setAttribute('aria-label', `No matches found for "${searchQuery}"`);
-//     }
-//   }
-// }
-
-// function findMatches(query, content) {
-//   const matches = [];
-//   const regex = new RegExp(query, "gi");
-//   const textNodes = document.createTreeWalker(
-//     mainContent,
-//     NodeFilter.SHOW_TEXT
-//   ); // Use the <main> element
-//   let currentNode;
-
-//   while ((currentNode = textNodes.nextNode())) {
-//     const match = currentNode.textContent.match(regex);
-//     if (match) {
-//       matches.push(...match);
-//     }
-//   }
-
-//   return matches;
-// }
-
-// function highlightMatches(matches, container) {
-//   const regex = new RegExp(`(${matches.join("|")})`, "gi");
-//   const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT); // Use the <main> element
-//   let currentNode;
-//   let firstMatchElement = null;
-
-//   while ((currentNode = walker.nextNode())) {
-//     const newNode = currentNode.textContent.replace(regex, (match) => {
-//       if (!firstMatchElement) {
-//         firstMatchElement = currentNode.parentNode;
-//       }
-//       return `<mark>${match}</mark>`;
-//     });
-//     if (newNode !== currentNode.textContent) {
-//       const newElement = document.createElement("span");
-//       newElement.innerHTML = newNode;
-//       const parentNode = currentNode.parentNode;
-//       parentNode.replaceChild(newElement, currentNode);
-//     }
-//   }
-
-//   return firstMatchElement;
-// }
-
-// function removeHighlights() {
-//   const marks = document.querySelectorAll("mark");
-//   marks.forEach((mark) => {
-//     const parentNode = mark.parentNode;
-//     const textNode = document.createTextNode(mark.textContent);
-//     parentNode.replaceChild(textNode, mark);
-//   });
-// }
-
-
-// Scrolling Bar
-const body = document.body;
-const progressBar = document.querySelector('.progress__bar');
-
-const updateProgress = () => {
-  const scrollPos = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-  document.querySelector('.progress__bar').style.width = `${scrollPos}%`;
-  requestAnimationFrame(updateProgress);
-};
-
-updateProgress();
-
-// Add this to your existing JavaScript
-window.addEventListener('scroll', function() {
-  const header = document.querySelector('.header');
-  if (window.scrollY > 50) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-});
-
-// Testimonial Carousel
-const track = document.querySelector(".carousel-track");
-const slides = Array.from(track.children);
-const nextButton = document.querySelector(".carousel-button.next");
-const prevButton = document.querySelector(".carousel-button.prev");
-
-let currentIndex = 0;
-
-const moveToSlide = (index) => {
-  if (index < 0) index = slides.length - 1;
-  if (index >= slides.length) index = 0;
-
-  track.style.transform = `translateX(-${index * 100}%)`;
-  slides.forEach((slide, i) => {
-    if (i === index) {
-      slide.classList.add("current-slide");
-      // Reset the animation
-      slide.style.animation = 'none';
-      slide.offsetHeight; // Trigger reflow
-      slide.style.animation = null;
-    } else {
-      slide.classList.remove("current-slide");
-    }
+  navTogglers.forEach(toggler => {
+    toggler.addEventListener("click", function(event) {
+      console.log("Nav toggler clicked", event.target);
+      toggleNavbar();
+    });
   });
-  currentIndex = index;
-};
 
-// Next button
-nextButton.addEventListener("click", () => {
-  moveToSlide(currentIndex + 1);
+  // Close navbar when clicking on a nav link
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navbar.classList.remove("active");
+      overlay.classList.remove("active");
+      document.body.classList.remove("nav-active");
+    });
+  });
+
+  // Header active when scroll down to 100px
+  const header = document.querySelector("[data-header]");
+  const backTopBtn = document.querySelector("[data-back-top-btn]");
+
+  function activeElem() {
+    if (window.scrollY > 100) {
+      header.classList.add("active");
+      backTopBtn.classList.add("active");
+    } else {
+      header.classList.remove("active");
+      backTopBtn.classList.remove("active");
+    }
+  }
+
+  window.addEventListener("scroll", activeElem);
+
+  // ... (rest of your existing code)
 });
-
-// Prev button
-prevButton.addEventListener("click", () => {
-  moveToSlide(currentIndex - 1);
-});
-
-// Auto-play
-let autoPlay = setInterval(() => {
-  moveToSlide(currentIndex + 1);
-}, 5000); // Change slide every 5 seconds
-
-// Pause auto-play on hover
-track.addEventListener("mouseenter", () => {
-  clearInterval(autoPlay);
-});
-
-// Resume auto-play when mouse leaves
-track.addEventListener("mouseleave", () => {
-  autoPlay = setInterval(() => {
-    moveToSlide(currentIndex + 1);
-  }, 5000);
-});
-
-// Initialize
-moveToSlide(0);
 
