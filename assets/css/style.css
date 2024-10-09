@@ -382,9 +382,16 @@ body {
   gap: 2rem;
 }
 
-.header-actions {
+.navbar-link {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+  color: var(--gray-web);
+  padding-block: 20px;
+}
+
+.header-actions {
+  display: flex;
   gap: 1rem;
 }
 
@@ -411,67 +418,133 @@ body {
   display: none; /* Hide menu toggle button by default */
 }
 
-/* Change the breakpoint from 991px to 1024px to include iPad Pro */
-@media (max-width: 1024px) {
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0; /* Change this to 0 */
-    background-color: var(--white);
-    width: 100%;
-    max-width: 320px;
-    height: 100%;
-    z-index: 1000;
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    overflow-y: auto;
-    padding-top: 80px;
-    transform: translateX(-100%);
-  }
+/* Base styles for all screen sizes */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: -320px;
+  background-color: rgba(255, 59, 63, 0.95);
+  width: 100%;
+  max-width: 320px;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+  z-index: 1000;
+  padding-top: 80px;
+}
 
-  .navbar.active {
-    transform: translateX(0); /* Change this to 0 */
-    background-color: rgba(255, 0, 0, 0.3); /* Add a red background when active for debugging */
+.navbar.active {
+  transform: translateX(320px);
+}
+
+.navbar-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.navbar-link {
+  color: var(--white) !important;
+  padding-block: 10px;
+}
+
+.header-action-btn {
+  display: block;
+}
+
+/* Language dropdown for small screens */
+.language-dropdown .dropbtn {
+  color: var(--white) !important;
+}
+
+.language-dropdown .dropdown-content {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.language-dropdown .dropdown-content a {
+  color: var(--white) !important;
+}
+
+/* Media query for large screens */
+@media (min-width: 1025px) {
+  .navbar {
+    position: static !important;
+    background-color: transparent !important;
+    width: auto !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    transform: none !important;
+    overflow-y: visible !important;
+    max-width: none !important;
+    left: auto !important;
   }
 
   .navbar-list {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: stretch !important; /* Change to stretch */
+    gap: 2rem !important;
+    padding: 0 !important;
+    height: 100% !important;
+  }
+
+  .navbar-item,
+  .language-dropdown {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .navbar-link,
+  .language-dropdown .dropbtn {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Specific styling for the language dropdown */
+  .language-dropdown {
+    position: relative !important;
+    height: auto !important;
+  }
+
+  .language-dropdown .dropbtn {
+    height: 100% !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    color: var(--eerie-black-1) !important;
+    cursor: pointer !important;
+  }
+
+  /* Remove any top margin that might be causing misalignment */
+  .language-dropdown {
+    margin-top: 0 !important;
+  }
+
+  .navbar-link {
+    color: var(--eerie-black-1) !important;
+    padding-block: 20px !important;
   }
 
   .header-action-btn {
-    display: block; /* Show menu toggle button on smaller screens */
-    font-size: 24px;
-    color: var(--eerie-black-1);
-    transition: var(--transition-1);
-    z-index: 1001; /* Ensure it's above the navbar and overlay */
+    display: none !important;
   }
 
-  .header-action-btn:hover {
-    color: var(--kappel);
+  /* Language dropdown for large screens */
+  .language-dropdown .dropbtn {
+    color: var(--eerie-black-1) !important;
   }
 
-  /* Hide the regular navbar items on medium screens */
-  .header .navbar-list {
-    display: none;
+  .language-dropdown .dropdown-content {
+    background-color: var(--white) !important;
   }
 
-  /* Show the navbar items when the menu is active */
-  .navbar.active .navbar-list {
-    display: flex;
-  }
-
-  /* Adjust the login button for medium screens */
-  .btn-login {
-    display: none; /* Hide the login button in the header */
-  }
-
-  /* Show the login button inside the active navbar */
-  .navbar.active .btn-login {
-    display: flex;
-    margin-top: 20px;
-    margin-left: 20px;
+  .language-dropdown .dropdown-content a {
+    color: var(--eerie-black-1) !important;
   }
 }
 
@@ -526,12 +599,22 @@ body {
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
   overflow-y: auto;
-  padding-top: 40px; /* Reduced top padding */
+  padding-top: 80px; /* Reduced top padding */
   transform: translateX(-100%);
 }
 
 .navbar.active {
-  transform: translateX(320px);
+  transform: translateX(320px); /* This will move the navbar into view */
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    left: -320px; /* Keep this as is */
+  }
+
+  .navbar.active {
+    transform: translateX(320px); /* This will move the navbar into view */
+  }
 }
 
 .navbar .wrapper {
@@ -575,25 +658,38 @@ body {
   margin-top: 30px; /* Increased space above the language dropdown */
 }
 
+.language-dropdown .dropbtn {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-family: inherit;
+  font-size: 1.5rem; /* Increased font size to match other navbar items */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 8px 0;
+}
+
 .language-dropdown .dropdown-content {
-  background-color: var(--white);
+  background-color: transparent; /* Make background transparent */
   min-width: 120px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
   margin-top: 5px;
   border-radius: var(--radius-5);
 }
 
 .language-dropdown .dropdown-content a {
-  color: var(--eerie-black-1);
-  padding: 15px 20px; /* Increased padding for better touch targets */
+  color: var(--white); /* Ensure text color is white */
+  padding: 10px 20px; /* Reduced padding to bring items closer */
   text-decoration: none;
   display: block;
-  font-size: 1.3rem; /* Increased font size for dropdown items */
+  font-size: 1.4rem; /* Increased font size */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .language-dropdown .dropdown-content a:hover {
-  background-color: var(--light-gray);
+  background-color: rgba(255, 255, 255, 0.1); /* Slight highlight on hover */
+  color: var(--isabelline); /* Lighter color on hover */
 }
 
 /* Adjust the login button inside the navbar */
