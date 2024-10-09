@@ -487,6 +487,7 @@ body {
     gap: 2rem !important;
     padding: 0 !important;
     height: 100% !important;
+    position: relative; /* Add this to allow absolute positioning of child elements */
   }
 
   .navbar-item,
@@ -505,15 +506,19 @@ body {
 
   /* Specific styling for the language dropdown */
   .language-dropdown {
-    position: relative !important;
-    height: auto !important;
+    position: absolute !important; /* Change to absolute positioning */
+    right: -210px !important; /* Move it 20px to the right */
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
   }
 
   .language-dropdown .dropbtn {
     height: 100% !important;
-    padding: 0 !important;
+    padding: 0 0 0 20px !important; /* Add left padding to create space */
     background: none !important;
     border: none !important;
+    border-left: 1px solid var(--light-gray) !important; /* Add a subtle separator */
     font-family: inherit !important;
     font-size: inherit !important;
     color: var(--eerie-black-1) !important;
