@@ -411,34 +411,33 @@ body {
   display: none; /* Hide menu toggle button by default */
 }
 
-@media (max-width: 991px) {
+/* Change the breakpoint from 991px to 1024px to include iPad Pro */
+@media (max-width: 1024px) {
   .navbar {
     position: fixed;
     top: 0;
-    left: -320px;
+    left: 0; /* Change this to 0 */
     background-color: var(--white);
     width: 100%;
     max-width: 320px;
     height: 100%;
-    z-index: 5; /* Increase z-index to be above the header */
-    transition: 0.25s var(--cubic-in);
-    overflow-y: auto; /* Add scrolling for long menus */
-    padding-top: 80px; /* Add top padding to avoid overlap with the header */
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    overflow-y: auto;
+    padding-top: 80px;
+    transform: translateX(-100%);
   }
 
   .navbar.active {
-    transform: translateX(320px);
-    transition: 0.5s var(--cubic-out);
+    transform: translateX(0); /* Change this to 0 */
+    background-color: rgba(255, 0, 0, 0.3); /* Add a red background when active for debugging */
   }
 
   .navbar-list {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 20px;
-  }
-
-  .btn-login {
-    display: none; /* Hide login button on smaller screens */
   }
 
   .header-action-btn {
@@ -446,10 +445,33 @@ body {
     font-size: 24px;
     color: var(--eerie-black-1);
     transition: var(--transition-1);
+    z-index: 1001; /* Ensure it's above the navbar and overlay */
   }
 
   .header-action-btn:hover {
     color: var(--kappel);
+  }
+
+  /* Hide the regular navbar items on medium screens */
+  .header .navbar-list {
+    display: none;
+  }
+
+  /* Show the navbar items when the menu is active */
+  .navbar.active .navbar-list {
+    display: flex;
+  }
+
+  /* Adjust the login button for medium screens */
+  .btn-login {
+    display: none; /* Hide the login button in the header */
+  }
+
+  /* Show the login button inside the active navbar */
+  .navbar.active .btn-login {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
   }
 }
 
@@ -497,17 +519,97 @@ body {
   position: fixed;
   top: 0;
   left: -320px;
-  background-color: var(--white);
+  background-color: rgba(255, 59, 63, 0.95); /* Less transparent red background */
   width: 100%;
   max-width: 320px;
   height: 100%;
-  z-index: 2;
-  transition: 0.25s var(--cubic-in);
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+  padding-top: 40px; /* Reduced top padding */
+  transform: translateX(-100%);
 }
 
 .navbar.active {
   transform: translateX(320px);
-  transition: 0.5s var(--cubic-out);
+}
+
+.navbar .wrapper {
+  display: none; /* Hide the logo wrapper */
+}
+
+.navbar-list {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap for better spacing */
+}
+
+.navbar-item:not(:last-child) {
+  border-block-end: none; /* Remove separating lines */
+}
+
+.navbar-link,
+.language-dropdown .dropbtn {
+  padding-block: 8px; /* Increased padding for better touch targets */
+  font-weight: var(--fw-500);
+  transition: var(--transition-1);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Increased gap between icon and text */
+  font-size: 1.5rem; /* Increased font size for all navbar items */
+}
+
+.navbar-link img {
+  width: 20px;
+  height: 20px;
+}
+
+.navbar-link:is(:hover, :focus) {
+  color: var(--isabelline); /* Lighter color on hover */
+}
+
+/* Style for the language dropdown */
+.language-dropdown {
+  margin-top: 30px; /* Increased space above the language dropdown */
+}
+
+.language-dropdown .dropdown-content {
+  background-color: var(--white);
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-top: 5px;
+  border-radius: var(--radius-5);
+}
+
+.language-dropdown .dropdown-content a {
+  color: var(--eerie-black-1);
+  padding: 15px 20px; /* Increased padding for better touch targets */
+  text-decoration: none;
+  display: block;
+  font-size: 1.3rem; /* Increased font size for dropdown items */
+}
+
+.language-dropdown .dropdown-content a:hover {
+  background-color: var(--light-gray);
+}
+
+/* Adjust the login button inside the navbar */
+.navbar .btn-login {
+  margin-top: 30px; /* Increased top margin */
+  margin-left: 20px;
+  background-color: var(--white);
+  color: var(--radical-red);
+  font-size: 1.5rem; /* Increased font size to match other items */
+  padding: 10px 20px; /* Increased padding for a larger button */
+}
+
+.navbar .btn-login:hover {
+  background-color: var(--isabelline);
+  color: var(--radical-red);
+  border-color: var(--white);
 }
 
 .navbar .wrapper {
@@ -527,37 +629,22 @@ body {
   color: var(--white);
 }
 
-.navbar-list {
-  padding: 15px 20px;
-}
-
-.navbar-item:not(:last-child) {
-  border-block-end: 1px solid var(--platinum);
-}
-
-.navbar-link {
-  padding-block: 8px;
-  font-weight: var(--fw-500);
-  transition: var(--transition-1);
-}
-
-.navbar-link:is(:hover, :focus) {
-  color: var(--radical-red);
-}
-
 .overlay {
   position: fixed;
-  inset: 0;
-  background-color: var(--black_80);
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Just below the navbar */
   opacity: 0;
-  z-index: 1;
-  transition: var(--transition-1);
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .overlay.active {
   opacity: 1;
-  pointer-events: all;
+  visibility: visible;
 }
 
 /*-----------------------------------*\
@@ -3150,5 +3237,37 @@ main {
 
 .back-top-btn:hover {
   background-color: var(--radical-red);
+}
+
+/* Update the navbar-link color */
+.navbar-link {
+  padding-block: 5px;
+  font-weight: var(--fw-500);
+  transition: var(--transition-1);
+  color: var(--white); /* Ensure this is set to white */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Ensure the language dropdown button text is also white */
+.language-dropdown .dropbtn {
+  background: none;
+  border: none;
+  color: var(--white); /* Ensure this is set to white */
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+/* You may also want to update the hover state for better contrast */
+.navbar-link:is(:hover, :focus),
+.language-dropdown .dropbtn:hover,
+.language-dropdown .dropbtn:focus {
+  color: var(--isabelline); /* Light color on hover for better visibility */
 }
 
