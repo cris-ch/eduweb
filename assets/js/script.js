@@ -1,46 +1,26 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("DOM fully loaded and parsed");
+
 
   // Navbar toggle
   const navbar = document.querySelector("[data-navbar]");
   const navTogglers = document.querySelectorAll("[data-nav-toggler]");
   const overlay = document.querySelector("[data-overlay]");
 
-  console.log("Navbar:", navbar);
-  console.log("Nav togglers:", navTogglers);
-  console.log("Overlay:", overlay);
-
   function toggleNavbar() {
-    console.log("Toggle navbar function called");
     
     navbar.classList.toggle("active");
     overlay.classList.toggle("active");
-    document.body.classList.toggle("nav-active");
-
-    console.log("Navbar classList:", navbar.classList);
-    console.log("Overlay classList:", overlay.classList);
-    console.log("Body classList:", document.body.classList);
-
-    // Log computed styles
-    const navbarStyles = window.getComputedStyle(navbar);
-    console.log("Navbar computed styles:");
-    console.log("- transform:", navbarStyles.transform);
-    console.log("- left:", navbarStyles.left);
-    console.log("- visibility:", navbarStyles.visibility);
-    console.log("- z-index:", navbarStyles.zIndex);
+    document.body.classList.toggle("nav-active");;
 
     // Force a reflow to ensure the styles are applied immediately
     navbar.offsetHeight;
 
-    // Remove this line:
-    // alert("Navbar toggled. Check the console and inspect the page.");
   }
 
   navTogglers.forEach(toggler => {
     toggler.addEventListener("click", function(event) {
-      console.log("Nav toggler clicked", event.target);
       toggleNavbar();
     });
   });
@@ -71,6 +51,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.addEventListener("scroll", activeElem);
 
-  // ... (rest of your existing code)
 });
 
