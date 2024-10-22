@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /assets/
 Sitemap: https://aplusingles.com/sitemap.xml
+Sitemap: https://aplusingles.com/image-sitemap.xml
 
 # Specific rules for major search engines
 User-agent: Googlebot
