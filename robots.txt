@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Sitemap: https://aplusingles.com/sitemap.xml
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /*.css$
+Allow: /*.js$
+
+User-agent: Bingbot
+Allow: /*.css$
+Allow: /*.js$
+
+User-agent: YandexBot
+Allow: /*.css$
+Allow: /*.js$
