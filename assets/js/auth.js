@@ -44,112 +44,115 @@ window.signIn = async function(email, password) {
   }
 };
 
-window.signUp = async function(email, password, displayName) {
-  try {
-    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-    await userCredential.user.updateProfile({ displayName });
-    // After signup, redirect to profile creation
-    const token = await userCredential.user.getIdToken();
-    window.location.href = '/dashboard/create-profile.html';
-    return userCredential.user;
-  } catch (error) {
-    throw error;
-  }
+window.signUp = async function() {
+    try {
+        console.log('Starting signup...');
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+        
+        console.log('Got email and password:', { email });
+
+        const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+        console.log('User created successfully:', user.email);
+
+        // Get token for API call
+        const token = await user.getIdToken();
+        console.log('Got token, redirecting to profile creation...');
+
+        // Redirect to profile creation
+        window.location.href = '/dashboard/create-profile.html';
+    } catch (error) {
+        console.error('Registration error:', error);
+        alert('Error al registrar: ' + error.message);
+    }
 };
+
+// Function to format name (e.g., "Cristian M. C.")
+function formatDisplayName(nombre, apellido) {
+    if (!nombre || !apellido) return '';
+    
+    const firstName = nombre.trim();
+    const lastNames = apellido.trim().split(' ');
+    const initials = lastNames.map(name => name.charAt(0).toUpperCase() + '.').join(' ');
+    
+    return `${firstName} ${initials}`;
+}
 
 // Auth state observer
 auth.onAuthStateChanged(async (user) => {
-  const authElements = document.querySelectorAll('[data-auth]');
-  const nonAuthElements = document.querySelectorAll('[data-non-auth]');
-  
-  if (user) {
-    // User is signed in
-    authElements.forEach(el => el.style.display = 'block');
-    nonAuthElements.forEach(el => el.style.display = 'none');
+    const authElements = document.querySelectorAll('[data-auth]');
+    const nonAuthElements = document.querySelectorAll('[data-non-auth]');
+    const userNameElements = document.querySelectorAll('[data-user-name]');
     
-    try {
-      const token = await user.getIdToken(true); // Force token refresh
-      
-      // Skip profile check if we're already on the create-profile page
-      if (window.location.pathname.includes('/dashboard/create-profile.html')) {
-        return;
-      }
-
-      // First check if profile exists
-      const profileResponse = await fetch('http://localhost:5000/api/user/profile', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        mode: 'cors'
-      });
-
-      // If profile doesn't exist, redirect to create-profile
-      if (profileResponse.status === 404) {
-        window.location.href = '/dashboard/create-profile.html';
-        return;
-      }
-
-      // If we have a profile, proceed with role check and dashboard redirect
-      const roleResponse = await fetch('http://localhost:5000/api/user/role', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        mode: 'cors'
-      });
-      
-      const { role } = await roleResponse.json();
-      
-      // Update UI based on role
-      const userNameElements = document.querySelectorAll('[data-user-name]');
-      userNameElements.forEach(el => {
-        el.textContent = `${user.displayName || user.email} (${role})`;
-      });
-
-      // Only redirect to dashboard if we're on the index page and have a profile
-      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-        switch(role) {
-          case 'admin':
-          case 'teacher':
-            window.location.href = '/dashboard/teacher.html';
-            break;
-          case 'student':
-          default:
-            window.location.href = '/dashboard/student.html';
-            break;
-        }
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      // If we get an unauthorized error, try refreshing the token
-      if (error.message.includes('401')) {
+    if (user) {
+        // User is signed in
+        authElements.forEach(el => el.style.display = 'block');
+        nonAuthElements.forEach(el => el.style.display = 'none');
+        
         try {
-          await user.getIdToken(true); // Force token refresh
-          window.location.reload(); // Reload the page to retry with new token
-          return;
-        } catch (refreshError) {
-          console.error('Error refreshing token:', refreshError);
+            const token = await user.getIdToken(true);
+            
+            // Skip profile check if we're already on the create-profile page
+            if (window.location.pathname.includes('/dashboard/create-profile.html')) {
+                userNameElements.forEach(el => el.textContent = user.email);
+                return;
+            }
+
+            // Get user profile
+            const profileResponse = await fetch('http://localhost:5000/api/user/profile', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'
+            });
+
+            // If profile doesn't exist, redirect to create-profile
+            if (profileResponse.status === 404) {
+                window.location.href = '/dashboard/create-profile.html';
+                return;
+            }
+
+            // If we have a profile, update the display name
+            if (profileResponse.ok) {
+                const profileData = await profileResponse.json();
+                const displayName = formatDisplayName(profileData.nombre, profileData.apellido);
+                userNameElements.forEach(el => el.textContent = displayName || user.email);
+            }
+
+            // Get user role and redirect to appropriate dashboard
+            const roleResponse = await fetch('http://localhost:5000/api/user/role', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'
+            });
+
+            if (roleResponse.ok) {
+                const { role } = await roleResponse.json();
+                if (!window.location.pathname.includes('/dashboard/')) {
+                    window.location.href = role === 'teacher' ? '/dashboard/teacher.html' : '/dashboard/student.html';
+                }
+            }
+        } catch (error) {
+            console.error('Error in auth state change:', error);
+            userNameElements.forEach(el => el.textContent = user.email);
         }
-      }
-      
-      // Only redirect to student dashboard if we're on the index page
-      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-        window.location.href = '/dashboard/student.html';
-      }
+    } else {
+        // User is signed out
+        authElements.forEach(el => el.style.display = 'none');
+        nonAuthElements.forEach(el => el.style.display = 'block');
+        userNameElements.forEach(el => el.textContent = '');
+        
+        // Redirect to home if on a protected page
+        if (window.location.pathname.includes('/dashboard/')) {
+            window.location.href = '/';
+        }
     }
-  } else {
-    // User is signed out
-    authElements.forEach(el => el.style.display = 'none');
-    nonAuthElements.forEach(el => el.style.display = 'block');
-    
-    // Redirect to home if on dashboard pages
-    if (window.location.pathname.includes('/dashboard/')) {
-      window.location.href = '/';
-    }
-  }
 });
 
 // Get current user's ID token

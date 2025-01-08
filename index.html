@@ -803,17 +803,17 @@
 
         <!-- Register Form -->
         <div id="registerForm" style="display: none;">
-          <h2 style="margin-bottom: 20px;">Register</h2>
+          <h2 style="margin-bottom: 20px;">Registrarse</h2>
           <form onsubmit="handleRegister(event)">
             <div style="margin-bottom: 15px;">
-              <input type="text" id="registerName" placeholder="Full Name" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
               <input type="email" id="registerEmail" placeholder="Email" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
-              <input type="password" id="registerPassword" placeholder="Password" required style="width: 100%; padding: 8px;">
+              <input type="password" id="registerPassword" placeholder="Contraseña" required minlength="6" style="width: 100%; padding: 8px;">
+              <small style="display: block; margin-top: 5px; color: #666;">La contraseña debe tener al menos 6 caracteres</small>
             </div>
-            <button type="submit" style="width: 100%; padding: 10px; background: #00A9FF; color: white; border: none; border-radius: 4px; cursor: pointer;">Register</button>
+            <button type="submit" style="width: 100%; padding: 10px; background: #00A9FF; color: white; border: none; border-radius: 4px; cursor: pointer;">Registrarse</button>
           </form>
           <p style="margin-top: 15px; text-align: center;">
-            Already have an account? <a href="#" onclick="toggleAuthForm('login')">Login</a>
+            ¿Ya tienes una cuenta? <a href="#" onclick="toggleAuthForm('login')">Iniciar sesión</a>
           </p>
         </div>
       </div>
@@ -932,10 +932,9 @@
       async function handleRegister(event) {
         event.preventDefault();
         try {
-          const name = document.getElementById('registerName').value;
           const email = document.getElementById('registerEmail').value;
           const password = document.getElementById('registerPassword').value;
-          await signUp(email, password, name);
+          await signUp(email, password);
           closeAuthModal();
         } catch (error) {
           alert(error.message);

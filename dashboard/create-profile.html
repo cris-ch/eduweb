@@ -37,45 +37,71 @@
     <div class="container">
         <div class="profile-form-container">
             <h2 class="mb-4 text-center">Completa tu Perfil</h2>
-            <form id="profileForm">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label for="nombre" class="form-label">Nombre*</label>
-                        <input type="text" class="form-control" id="nombre" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="apellido" class="form-label">Apellido*</label>
-                        <input type="text" class="form-control" id="apellido" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="sexo" class="form-label">Sexo*</label>
-                        <select class="form-select" id="sexo" required>
-                            <option value="">Seleccionar...</option>
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
-                            <option value="O">Otro</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="documento" class="form-label">DNI/NIE/Pasaporte*</label>
-                        <input type="text" class="form-control" id="documento" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="fechaNacimiento" class="form-label">Fecha Nacimiento*</label>
-                        <input type="date" class="form-control" id="fechaNacimiento" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="telefono" class="form-label">Teléfono*</label>
-                        <input type="tel" class="form-control" id="telefono" required>
-                    </div>
-                    <div class="col-12">
-                        <label for="email" class="form-label">Email*</label>
-                        <input type="email" class="form-control" id="email" required readonly>
+            <form id="profileForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required 
+                           pattern="[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+" 
+                           title="Solo letras y espacios permitidos">
+                    <div class="invalid-feedback">
+                        Por favor ingrese un nombre válido (solo letras)
                     </div>
                 </div>
-                <div class="mt-4 text-center">
-                    <button type="submit" class="btn btn-primary">Guardar Perfil</button>
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido" required 
+                           pattern="[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+" 
+                           title="Solo letras y espacios permitidos">
+                    <div class="invalid-feedback">
+                        Por favor ingrese un apellido válido (solo letras)
+                    </div>
                 </div>
+                <div class="mb-3">
+                    <label for="sexo" class="form-label">Sexo</label>
+                    <select class="form-select" id="sexo" name="sexo" required>
+                        <option value="">Seleccione...</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                        <option value="O">Otro</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor seleccione una opción
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="documento" class="form-label">DNI/NIE/Pasaporte</label>
+                    <input type="text" class="form-control" id="documento" name="documento" required 
+                           pattern="^[0-9XYZ][0-9]{7}[A-Z]$|^[A-Z][0-9]{8}$" 
+                           title="Formato válido: DNI (12345678A), NIE (X1234567A) o Pasaporte">
+                    <div class="invalid-feedback">
+                        Por favor ingrese un documento válido (DNI: 12345678A, NIE: X1234567A)
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="fechaNacimiento" class="form-label">Fecha Nacimiento</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required
+                           min="1900-01-01">
+                    <div class="invalid-feedback">
+                        Por favor ingrese una fecha válida
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" required 
+                           pattern="[0-9]{9}" 
+                           title="Número de teléfono de 9 dígitos">
+                    <div class="invalid-feedback">
+                        Por favor ingrese un teléfono válido (9 dígitos)
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required readonly>
+                    <div class="invalid-feedback">
+                        Por favor ingrese un email válido
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Crear Perfil</button>
             </form>
         </div>
     </div>
@@ -103,6 +129,82 @@
 <script src="../assets/js/auth.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
+            const form = document.getElementById('profileForm');
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                // Check HTML5 validation
+                if (!form.checkValidity()) {
+                    form.classList.add('was-validated');
+                    return; // Stop here if form is invalid
+                }
+
+                try {
+                    const user = firebase.auth().currentUser;
+                    if (!user) {
+                        console.error('No user found');
+                        window.location.href = '/';
+                        return;
+                    }
+
+                    const token = await user.getIdToken(true);
+                    console.log('Got token:', token);
+                    
+                    const profileData = {
+                        nombre: document.getElementById('nombre').value,
+                        apellido: document.getElementById('apellido').value,
+                        sexo: document.getElementById('sexo').value,
+                        documento: document.getElementById('documento').value,
+                        fechaNacimiento: document.getElementById('fechaNacimiento').value,
+                        telefono: document.getElementById('telefono').value,
+                        email: document.getElementById('email').value
+                    };
+                    
+                    console.log('Sending profile data:', profileData);
+
+                    const response = await fetch('http://localhost:5000/api/user/profile', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        mode: 'cors',
+                        body: JSON.stringify(profileData)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Error saving profile');
+                    }
+
+                    // Show success message
+                    alert('Perfil guardado correctamente');
+
+                    // Get user role
+                    const roleResponse = await fetch('http://localhost:5000/api/user/role', {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        mode: 'cors'
+                    });
+                    
+                    if (!roleResponse.ok) {
+                        throw new Error('Error getting user role');
+                    }
+                    
+                    const { role } = await roleResponse.json();
+                    
+                    // Redirect based on role
+                    window.location.href = role === 'teacher' ? '/dashboard/teacher.html' : '/dashboard/student.html';
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error al guardar el perfil: ' + error.message);
+                }
+            });
+
             try {
                 // Wait for Firebase Auth to initialize and get current user
                 const user = await new Promise((resolve) => {
@@ -150,64 +252,6 @@
                 } catch (error) {
                     console.error('Error fetching profile:', error);
                 }
-
-                // Handle form submission
-                document.getElementById('profileForm').addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    
-                    try {
-                        const token = await user.getIdToken(true);
-                        console.log('Got token:', token);
-                        
-                        const profileData = {
-                            nombre: document.getElementById('nombre').value,
-                            apellido: document.getElementById('apellido').value,
-                            sexo: document.getElementById('sexo').value,
-                            documento: document.getElementById('documento').value,
-                            fechaNacimiento: document.getElementById('fechaNacimiento').value,
-                            telefono: document.getElementById('telefono').value,
-                            email: document.getElementById('email').value
-                        };
-                        
-                        console.log('Sending profile data:', profileData);
-
-                        const response = await fetch('http://localhost:5000/api/user/profile', {
-                            method: 'POST',
-                            headers: {
-                                'Authorization': `Bearer ${token}`,
-                                'Content-Type': 'application/json'
-                            },
-                            mode: 'cors',
-                            body: JSON.stringify(profileData)
-                        });
-
-                        if (!response.ok) {
-                            const errorData = await response.json();
-                            throw new Error(errorData.error || 'Error saving profile');
-                        }
-
-                        // Show success message
-                        alert('Perfil guardado correctamente');
-
-                        // Get user role
-                        const roleResponse = await fetch('http://localhost:5000/api/user/role', {
-                            method: 'GET',
-                            headers: {
-                                'Authorization': `Bearer ${token}`,
-                                'Content-Type': 'application/json'
-                            },
-                            mode: 'cors'
-                        });
-                        
-                        const { role } = await roleResponse.json();
-                        
-                        // Redirect based on role
-                        window.location.href = role === 'teacher' ? '/dashboard/teacher.html' : '/dashboard/student.html';
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Error al guardar el perfil: ' + error.message);
-                    }
-                });
             } catch (error) {
                 console.error('Initialization error:', error);
                 alert('Error al inicializar: ' + error.message);
