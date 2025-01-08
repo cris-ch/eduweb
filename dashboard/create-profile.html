@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Perfil - A+ Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .profile-form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .form-label {
+            font-weight: 500;
+        }
+        .btn-primary {
+            background-color: #2c3e50;
+            border-color: #2c3e50;
+            padding: 10px 30px;
+        }
+        .btn-primary:hover {
+            background-color: #34495e;
+            border-color: #34495e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-form-container">
+            <h2 class="mb-4 text-center">Completa tu Perfil</h2>
+            <form id="profileForm">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="nombre" class="form-label">Nombre*</label>
+                        <input type="text" class="form-control" id="nombre" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="apellido" class="form-label">Apellido*</label>
+                        <input type="text" class="form-control" id="apellido" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="sexo" class="form-label">Sexo*</label>
+                        <select class="form-select" id="sexo" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                            <option value="O">Otro</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="documento" class="form-label">DNI/NIE/Pasaporte*</label>
+                        <input type="text" class="form-control" id="documento" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fechaNacimiento" class="form-label">Fecha Nacimiento*</label>
+                        <input type="date" class="form-control" id="fechaNacimiento" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="telefono" class="form-label">Teléfono*</label>
+                        <input type="tel" class="form-control" id="telefono" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="email" class="form-label">Email*</label>
+                        <input type="email" class="form-control" id="email" required readonly>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <button type="submit" class="btn btn-primary">Guardar Perfil</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+<!-- Initialize Firebase -->
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyBm1e-_RERs-KwLzREHKrr6tBkumMMKMGc",
+        authDomain: "aplus-academy-67f52.firebaseapp.com",
+        projectId: "aplus-academy-67f52",
+        storageBucket: "aplus-academy-67f52.firebasestorage.app",
+        messagingSenderId: "414936083132",
+        appId: "1:414936083132:web:b9379090efa97693427eb9",
+        measurementId: "G-V6ZGQFG9P9"
+    };
+    firebase.initializeApp(firebaseConfig);
+</script>
+
+<!-- Auth script -->
+<script src="../assets/js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Wait for Firebase Auth to initialize and get current user
+                const user = await new Promise((resolve) => {
+                    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+                        unsubscribe();
+                        resolve(user);
+                    });
+                });
+
+                if (!user) {
+                    console.error('No user found');
+                    window.location.href = '/';
+                    return;
+                }
+
+                // Pre-fill email
+                document.getElementById('email').value = user.email;
+
+                // Check if profile exists
+                try {
+                    const token = await user.getIdToken(true);
+                    const response = await fetch('http://localhost:5000/api/user/profile', {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        mode: 'cors'
+                    });
+
+                    if (response.ok) {
+                        // Profile exists, pre-fill form
+                        const profileData = await response.json();
+                        document.getElementById('nombre').value = profileData.nombre || '';
+                        document.getElementById('apellido').value = profileData.apellido || '';
+                        document.getElementById('sexo').value = profileData.sexo || '';
+                        document.getElementById('documento').value = profileData.documento || '';
+                        document.getElementById('fechaNacimiento').value = profileData.fechaNacimiento || '';
+                        document.getElementById('telefono').value = profileData.telefono || '';
+                        
+                        // Update page title and button text
+                        document.querySelector('h2').textContent = 'Editar Perfil';
+                        document.querySelector('button[type="submit"]').textContent = 'Actualizar Perfil';
+                    }
+                } catch (error) {
+                    console.error('Error fetching profile:', error);
+                }
+
+                // Handle form submission
+                document.getElementById('profileForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    try {
+                        const token = await user.getIdToken(true);
+                        console.log('Got token:', token);
+                        
+                        const profileData = {
+                            nombre: document.getElementById('nombre').value,
+                            apellido: document.getElementById('apellido').value,
+                            sexo: document.getElementById('sexo').value,
+                            documento: document.getElementById('documento').value,
+                            fechaNacimiento: document.getElementById('fechaNacimiento').value,
+                            telefono: document.getElementById('telefono').value,
+                            email: document.getElementById('email').value
+                        };
+                        
+                        console.log('Sending profile data:', profileData);
+
+                        const response = await fetch('http://localhost:5000/api/user/profile', {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Bearer ${token}`,
+                                'Content-Type': 'application/json'
+                            },
+                            mode: 'cors',
+                            body: JSON.stringify(profileData)
+                        });
+
+                        if (!response.ok) {
+                            const errorData = await response.json();
+                            throw new Error(errorData.error || 'Error saving profile');
+                        }
+
+                        // Show success message
+                        alert('Perfil guardado correctamente');
+
+                        // Get user role
+                        const roleResponse = await fetch('http://localhost:5000/api/user/role', {
+                            method: 'GET',
+                            headers: {
+                                'Authorization': `Bearer ${token}`,
+                                'Content-Type': 'application/json'
+                            },
+                            mode: 'cors'
+                        });
+                        
+                        const { role } = await roleResponse.json();
+                        
+                        // Redirect based on role
+                        window.location.href = role === 'teacher' ? '/dashboard/teacher.html' : '/dashboard/student.html';
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Error al guardar el perfil: ' + error.message);
+                    }
+                });
+            } catch (error) {
+                console.error('Initialization error:', error);
+                alert('Error al inicializar: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>

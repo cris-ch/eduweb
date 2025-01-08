@@ -48,6 +48,9 @@ window.signUp = async function(email, password, displayName) {
   try {
     const userCredential = await auth.createUserWithEmailAndPassword(email, password);
     await userCredential.user.updateProfile({ displayName });
+    // After signup, redirect to profile creation
+    const token = await userCredential.user.getIdToken();
+    window.location.href = '/dashboard/create-profile.html';
     return userCredential.user;
   } catch (error) {
     throw error;
@@ -64,10 +67,32 @@ auth.onAuthStateChanged(async (user) => {
     authElements.forEach(el => el.style.display = 'block');
     nonAuthElements.forEach(el => el.style.display = 'none');
     
-    // Get user role and redirect to appropriate dashboard
     try {
-      const token = await user.getIdToken();
-      const response = await fetch('http://localhost:5000/api/user/role', {
+      const token = await user.getIdToken(true); // Force token refresh
+      
+      // Skip profile check if we're already on the create-profile page
+      if (window.location.pathname.includes('/dashboard/create-profile.html')) {
+        return;
+      }
+
+      // First check if profile exists
+      const profileResponse = await fetch('http://localhost:5000/api/user/profile', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        mode: 'cors'
+      });
+
+      // If profile doesn't exist, redirect to create-profile
+      if (profileResponse.status === 404) {
+        window.location.href = '/dashboard/create-profile.html';
+        return;
+      }
+
+      // If we have a profile, proceed with role check and dashboard redirect
+      const roleResponse = await fetch('http://localhost:5000/api/user/role', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -76,11 +101,7 @@ auth.onAuthStateChanged(async (user) => {
         mode: 'cors'
       });
       
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const { role } = await response.json();
+      const { role } = await roleResponse.json();
       
       // Update UI based on role
       const userNameElements = document.querySelectorAll('[data-user-name]');
@@ -88,7 +109,7 @@ auth.onAuthStateChanged(async (user) => {
         el.textContent = `${user.displayName || user.email} (${role})`;
       });
 
-      // Redirect to appropriate dashboard if on index page
+      // Only redirect to dashboard if we're on the index page and have a profile
       if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
         switch(role) {
           case 'admin':
@@ -102,8 +123,19 @@ auth.onAuthStateChanged(async (user) => {
         }
       }
     } catch (error) {
-      console.error('Error getting user role:', error);
-      // Default to student dashboard if role fetch fails
+      console.error('Error:', error);
+      // If we get an unauthorized error, try refreshing the token
+      if (error.message.includes('401')) {
+        try {
+          await user.getIdToken(true); // Force token refresh
+          window.location.reload(); // Reload the page to retry with new token
+          return;
+        } catch (refreshError) {
+          console.error('Error refreshing token:', refreshError);
+        }
+      }
+      
+      // Only redirect to student dashboard if we're on the index page
       if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
         window.location.href = '/dashboard/student.html';
       }
