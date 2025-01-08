@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - A Plus English Academy</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/logo-aplus.png" type="image/png" />
+    <link rel="icon" href="../assets/images/logo-aplus.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/images/logo-aplus.png">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .dashboard-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 80px auto 0;
+        }
+        .dashboard-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-2);
+        }
+        /* Override navbar styles for dashboard */
+        .navbar-link {
+            font-family: "Poppins", sans-serif;
+            color: rgb(23, 23, 23);
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 26.25px;
+            transition: all 0.25s ease;
+            height: 66.25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 0;
+        }
+        .navbar-link:is(:hover, :focus) {
+            color: var(--kappel);
+        }
+        .navbar-link img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+        @media (min-width: 1025px) {
+            .navbar {
+                position: static !important;
+                background-color: transparent !important;
+                width: auto !important;
+                height: auto !important;
+                padding: 0 !important;
+                overflow-y: visible !important;
+                transform: none !important;
+            }
+            .navbar-list {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                gap: 48px !important;
+                margin-inline: auto;
+                padding: 0 !important;
+            }
+            .navbar-link {
+                color: rgb(23, 23, 23) !important;
+            }
+            .header-action-btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" data-header>
+        <div class="container">
+            <a href="/" class="logo" aria-label="A Plus logo">
+                <img
+                    src="../assets/images/logo-aplus.png"
+                    width="100"
+                    height="31"
+                    alt="A Plus Logo"
+                />
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <div class="wrapper">
+                    <a href="/" class="logo">
+                        <img
+                            src="../assets/images/logo-aplus.png"
+                            width="100"
+                            height="31"
+                            alt="A Plus Logo"
+                        />
+                    </a>
+                    <button
+                        class="nav-close-btn"
+                        aria-label="close menu"
+                        data-nav-toggler
+                    >
+                        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="#students-section" class="navbar-link" onclick="showSection('students')">
+                            <img src="../assets/images/about1.png" alt="Students" width="24" height="24" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                            Students
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="#classes-section" class="navbar-link" onclick="showSection('classes')">
+                            <img src="../assets/images/classes.png" alt="Classes" width="24" height="24" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                            Classes
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="#assignments-section" class="navbar-link" onclick="showSection('assignments')">
+                            <img src="../assets/images/assignment.png" alt="Assignments" width="24" height="24" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                            Assignments
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="#grades-section" class="navbar-link" onclick="showSection('grades')">
+                            <img src="../assets/images/grades.png" alt="Grades" width="24" height="24" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                            Grades
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div data-auth style="display: none;" class="header-actions">
+                    <div class="dropdown" style="position: relative;">
+                        <a href="#" class="btn btn-login" onclick="toggleDropdown(event)">
+                            <img
+                                src="../assets/images/login1.png"
+                                alt="Profile"
+                                width="20"
+                                height="20"
+                            />
+                            <span class="span" data-user-name>User</span>
+                        </a>
+                        <div class="dropdown-content" style="display: none; position: absolute; right: 0; background: white; min-width: 160px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); z-index: 1; border-radius: 4px;">
+                            <a href="#" style="color: black; padding: 12px 16px; text-decoration: none; display: block;" onclick="handleSignOut()">Sign Out</a>
+                        </div>
+                    </div>
+                </div>
+
+                <button
+                    class="header-action-btn"
+                    aria-label="Open menu"
+                    data-nav-toggler
+                >
+                    <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="dashboard-content">
+            <div id="students-section" style="display: none;">
+                <h2>Students Management</h2>
+                <!-- Student list and management tools will go here -->
+            </div>
+
+            <div id="classes-section" style="display: none;">
+                <h2>Classes Management</h2>
+                <!-- Class management tools will go here -->
+            </div>
+
+            <div id="assignments-section" style="display: none;">
+                <h2>Assignments</h2>
+                <!-- Assignment creation and management will go here -->
+            </div>
+
+            <div id="grades-section" style="display: none;">
+                <h2>Grades</h2>
+                <!-- Grade management will go here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    
+    <!-- Ionicon link -->
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script>
+        // Show/hide dashboard sections
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.dashboard-content > div').forEach(div => {
+                div.style.display = 'none';
+            });
+            // Show selected section
+            document.getElementById(`${sectionName}-section`).style.display = 'block';
+        }
+
+        // Show students section by default
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('students');
+        });
+
+        // Add navbar toggle functionality
+        const navTogglers = document.querySelectorAll("[data-nav-toggler]");
+        const navbar = document.querySelector("[data-navbar]");
+        const overlay = document.querySelector("[data-overlay]");
+
+        const toggleNavbar = function () {
+            navbar.classList.toggle("active");
+        };
+
+        navTogglers.forEach((toggler) => {
+            toggler.addEventListener("click", toggleNavbar);
+        });
+
+        // Toggle dropdown menu
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.currentTarget.nextElementSibling;
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+            
+            // Close dropdown when clicking outside
+            const closeDropdown = (e) => {
+                if (!event.currentTarget.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                    document.removeEventListener('click', closeDropdown);
+                }
+            };
+            
+            document.addEventListener('click', closeDropdown);
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.previousElementSibling.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
