@@ -111,23 +111,12 @@
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 
-<!-- Initialize Firebase -->
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyBm1e-_RERs-KwLzREHKrr6tBkumMMKMGc",
-        authDomain: "aplus-academy-67f52.firebaseapp.com",
-        projectId: "aplus-academy-67f52",
-        storageBucket: "aplus-academy-67f52.firebasestorage.app",
-        messagingSenderId: "414936083132",
-        appId: "1:414936083132:web:b9379090efa97693427eb9",
-        measurementId: "G-V6ZGQFG9P9"
-    };
-    firebase.initializeApp(firebaseConfig);
-</script>
-
 <!-- Auth script -->
 <script src="../assets/js/auth.js"></script>
     <script>
+        // Get base URL for API calls
+        const API_BASE_URL = window.location.origin;
+        
         document.addEventListener('DOMContentLoaded', async () => {
             const form = document.getElementById('profileForm');
             form.addEventListener('submit', async function(event) {
@@ -141,6 +130,10 @@
                 }
 
                 try {
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Guardando...';
+
                     const user = firebase.auth().currentUser;
                     if (!user) {
                         console.error('No user found');
@@ -163,45 +156,53 @@
                     
                     console.log('Sending profile data:', profileData);
 
-                    const response = await fetch('http://localhost:5000/api/user/profile', {
+                    const response = await fetch(`${API_BASE_URL}/api/user/profile`, {
                         method: 'POST',
                         headers: {
                             'Authorization': `Bearer ${token}`,
                             'Content-Type': 'application/json'
                         },
-                        mode: 'cors',
+                        credentials: 'same-origin',
                         body: JSON.stringify(profileData)
                     });
 
+                    const responseData = await response.json();
+                    console.log('Server response:', responseData);
+
                     if (!response.ok) {
-                        const errorData = await response.json();
-                        throw new Error(errorData.error || 'Error saving profile');
+                        throw new Error(responseData.error || 'Error saving profile');
                     }
 
                     // Show success message
                     alert('Perfil guardado correctamente');
 
                     // Get user role
-                    const roleResponse = await fetch('http://localhost:5000/api/user/role', {
+                    const roleResponse = await fetch(`${API_BASE_URL}/api/user/role`, {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`,
                             'Content-Type': 'application/json'
                         },
-                        mode: 'cors'
+                        credentials: 'same-origin'
                     });
                     
+                    const roleData = await roleResponse.json();
+                    console.log('Role response:', roleData);
+                    
                     if (!roleResponse.ok) {
-                        throw new Error('Error getting user role');
+                        throw new Error(roleData.error || 'Error getting user role');
                     }
                     
-                    const { role } = await roleResponse.json();
-                    
                     // Redirect based on role
-                    window.location.href = role === 'teacher' ? '/dashboard/teacher.html' : '/dashboard/student.html';
+                    window.location.href = roleData.role === 'teacher' ? '/dashboard/teacher.html' : '/dashboard/student.html';
+
                 } catch (error) {
                     console.error('Error:', error);
                     alert('Error al guardar el perfil: ' + error.message);
+                } finally {
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Crear Perfil';
                 }
             });
 
@@ -215,46 +216,40 @@
                 });
 
                 if (!user) {
-                    console.error('No user found');
                     window.location.href = '/';
                     return;
                 }
 
-                // Pre-fill email
+                // Pre-fill email field
                 document.getElementById('email').value = user.email;
 
                 // Check if profile exists
-                try {
-                    const token = await user.getIdToken(true);
-                    const response = await fetch('http://localhost:5000/api/user/profile', {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': `Bearer ${token}`,
-                            'Content-Type': 'application/json'
-                        },
-                        mode: 'cors'
-                    });
+                const token = await user.getIdToken(true);
+                const response = await fetch(`${API_BASE_URL}/api/user/profile`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'same-origin'
+                });
 
-                    if (response.ok) {
-                        // Profile exists, pre-fill form
-                        const profileData = await response.json();
-                        document.getElementById('nombre').value = profileData.nombre || '';
-                        document.getElementById('apellido').value = profileData.apellido || '';
-                        document.getElementById('sexo').value = profileData.sexo || '';
-                        document.getElementById('documento').value = profileData.documento || '';
-                        document.getElementById('fechaNacimiento').value = profileData.fechaNacimiento || '';
-                        document.getElementById('telefono').value = profileData.telefono || '';
-                        
-                        // Update page title and button text
-                        document.querySelector('h2').textContent = 'Editar Perfil';
-                        document.querySelector('button[type="submit"]').textContent = 'Actualizar Perfil';
-                    }
-                } catch (error) {
-                    console.error('Error fetching profile:', error);
+                if (response.ok) {
+                    const profile = await response.json();
+                    console.log('Existing profile:', profile);
+                    
+                    // Pre-fill form with existing data
+                    document.getElementById('nombre').value = profile.nombre || '';
+                    document.getElementById('apellido').value = profile.apellido || '';
+                    document.getElementById('sexo').value = profile.sexo || '';
+                    document.getElementById('documento').value = profile.documento || '';
+                    document.getElementById('fechaNacimiento').value = profile.fechaNacimiento || '';
+                    document.getElementById('telefono').value = profile.telefono || '';
                 }
+
             } catch (error) {
-                console.error('Initialization error:', error);
-                alert('Error al inicializar: ' + error.message);
+                console.error('Error:', error);
+                alert('Error al cargar el perfil: ' + error.message);
             }
         });
     </script>
