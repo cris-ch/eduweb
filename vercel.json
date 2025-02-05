@@ -4,6 +4,22 @@
     {
       "src": "server/index.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "assets/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "dashboard/**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.{js,css,svg,png,jpg,jpeg}",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -12,8 +28,11 @@
       "dest": "server/index.js"
     },
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "server/index.js"
     }
   ]
 }
